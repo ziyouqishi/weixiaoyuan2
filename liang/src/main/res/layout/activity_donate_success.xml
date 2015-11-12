@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+   >
+    <RelativeLayout
+        android:id="@+id/don_succ_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageButton
+                android:id="@+id/don_succ_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/don_succ_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:text="捐赠成功"/>
+
+            <ImageButton
+                android:id="@+id/don_succ_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+
+                android:background="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/don_succ_one">
+
+    <RelativeLayout
+        android:id="@+id/don_succ_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/don_succ_two_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/xiao"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/don_succ_two_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="捐赠成功"
+            android:textSize="23sp"
+            android:layout_below="@+id/don_succ_two_iv"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/don_succ_two_xian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/henxian"
+            android:layout_below="@+id/don_succ_two_tv"
+            android:layout_marginTop="7dp"/>
+
+        <ImageView
+            android:id="@+id/don_succ_two_xin"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/xin"
+            android:layout_below="@+id/don_succ_two_xian"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"/>
+
+        <TextView
+            android:id="@+id/don_succ_two_io"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主银再见~就算分开，伦家也会把你的爱心继续传递下去的。谢谢主银~~"
+            android:textSize="19sp"
+            android:layout_below="@+id/don_succ_two_xin"
+            android:layout_marginTop="6dp"
+            android:textColor="#1E1E1E"
+            android:layout_alignLeft="@+id/don_succ_two_xin"
+            android:layout_alignRight="@+id/don_succ_two_xin"
+            android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:id="@+id/don_succ_two_haha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/don_succ_two_io">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/don_succ_two_jifen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/lyo"
+                android:layout_marginLeft="10dp"
+               />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快去查看你的积分吧"
+                android:textSize="19sp"
+                android:layout_toRightOf="@+id/don_succ_two_jifen"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="7dp"
+                />
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

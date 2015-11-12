@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F8FF"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/reg_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageButton
+                android:id="@+id/reg_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/reg_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="注册账号"/>
+
+            <ImageButton
+                android:id="@+id/reg_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/touxiang"
+        android:layout_below="@+id/reg_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true">
+
+            <com.zhimei.liang.customview.RoundImageView
+                android:id="@+id/register_ib_photo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/test"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+
+           <!-- <TextView
+                android:id="@+id/per_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="上传头像"
+                android:layout_below="@+id/per_iv_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="#EE0000"/>-->
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/reg_two"
+                android:layout_below="@+id/touxiang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout
+
+        android:id="@+id/ttt"
+        android:layout_below="@+id/reg_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <!--<RelativeLayout
+            android:id="@+id/reg_ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/reg_tv_ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="学号 ：        "
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:id="@+id/reg_et_ID"
+                android:layout_toRightOf="@+id/reg_tv_ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginRight="20dp"
+                android:inputType="number"
+                android:singleLine="true"
+                />
+
+            <ImageView
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_tv_ID"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/henxian"
+                android:paddingTop="10dp"
+                />
+
+        </RelativeLayout>-->
+
+
+
+        <RelativeLayout
+            android:id="@+id/reg_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/reg_tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="昵称:"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:id="@+id/reg_et_name"
+                android:layout_toRightOf="@+id/reg_tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginRight="20dp"
+                android:singleLine="true"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_tv_nickname"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/henxian"
+                android:paddingTop="10dp"
+                />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/reg_password"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/reg_nickname"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/reg_tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="密码:"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:id="@+id/reg_et_password"
+                android:layout_toRightOf="@+id/reg_tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginRight="20dp"
+                android:singleLine="true"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_tv_password"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/henxian"
+                android:paddingTop="10dp"
+                />
+
+        </RelativeLayout>
+
+
+       <RelativeLayout
+            android:id="@+id/reg_address"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/reg_password"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/reg_tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="地址"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:id="@+id/reg_et_address"
+                android:layout_toRightOf="@+id/reg_tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginRight="20dp"
+                android:singleLine="true"
+                android:hint="请详细到宿舍号"
+                />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_tv_address"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/henxian"
+                android:paddingTop="10dp"
+                />
+
+        </RelativeLayout>
+
+ <!--       <RelativeLayout
+            android:id="@+id/add_photo_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_password"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp">
+
+            <ImageButton
+
+                android:id="@+id/register_ib_photof"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/addphoto"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加照片"
+                android:textSize="17sp"
+                android:layout_below="@+id/register_ib_photof"/>
+        </RelativeLayout>-->
+
+       <!-- <RelativeLayout
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/add_photo_register"
+            android:layout_marginRight="15dp"
+            android:layout_alignTop="@+id/add_photo_register">
+            <ImageView
+                android:id="@+id/imageView_test"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/logo"
+                android:visibility="invisible"
+                />
+        </RelativeLayout>-->
+
+
+
+        <RelativeLayout
+            android:id="@+id/reg_four"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/reg_address"
+            android:layout_marginTop="15dp"
+            android:background="#F0F8FF">
+
+            <Button
+                android:id="@+id/reg_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="下一步"
+                android:background="#009ACD"
+                android:layout_margin="15dp"
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+            </ScrollView>
+
+
+
+
+        </RelativeLayout>
+
+

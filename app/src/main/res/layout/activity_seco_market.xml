@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <RelativeLayout
+        android:id="@+id/sec_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/sec_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/sec_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="二手市场"/>
+
+            <ImageView
+                android:id="@+id/sec_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/sec_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sec_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sec_one">
+
+      <RelativeLayout
+          android:id="@+id/sec_search"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="10dp">
+          <EditText
+              android:id="@+id/sec_et_search"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@android:drawable/edit_text"
+              android:ems="10"
+              android:singleLine="true"
+              android:hint="输入名称"/>
+
+          <Button
+              android:id="@+id/sec_bt_search"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/sec_et_search"
+              android:text="搜索"
+              android:textSize="18sp"
+              android:layout_alignBottom="@+id/sec_et_search"
+              />
+
+      </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sec_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/sec_two">
+
+        <Button
+            android:id="@+id/sec_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:layout_marginLeft="13dp"
+            android:background="#98F5FF"
+            android:text="发布商品"/>
+
+
+        <Button
+            android:id="@+id/sec_need"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+           android:layout_marginRight="13dp"
+            android:background="#98F5FF"
+            android:text="发布需求"/>
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/sec_gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:columnWidth="5dp"
+        android:stretchMode="columnWidth"
+        android:layout_below="@+id/sec_three"
+        android:layout_marginTop="8dp"
+        >
+
+    </GridView>
+
+
+
+</RelativeLayout>

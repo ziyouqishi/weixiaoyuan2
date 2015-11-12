@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <com.zhimei.liang.customview.RoundImageView
+        android:id="@+id/demand_touxiang"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/disini"/>
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/demand_touxiang"
+            android:text="鞋子"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FF3030"
+            android:textSize="20sp"/>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/one"
+        android:layout_alignLeft="@+id/one"
+        >
+
+        <TextView
+            android:id="@+id/goods_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="求购九成新的鞋子，运动鞋和休闲鞋最好。非诚勿扰"
+            android:maxEms="11"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:lines="3"
+
+            android:textSize="17sp"/>
+
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/four"
+        android:layout_alignBottom="@+id/four"
+
+       >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+       <!-- <TextView
+            android:id="@+id/release_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 52"
+
+            android:layout_marginLeft="10dp"
+            android:textColor="#FF3030"
+            android:textSize="19sp"/>-->
+
+        <TextView
+            android:id="@+id/release_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2015-5-14"
+            android:textColor="#FF3030"
+            android:layout_marginTop="6dp"
+            android:textSize="19sp"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:id="@+id/alter_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/alter_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/alter_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:text="修改地址"/>
+
+            <ImageView
+                android:id="@+id/alter_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/alter_two"
+        android:layout_below="@+id/alter_one"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFF"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="草帽小子"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginTop="8dp"
+            android:text="当前地址"
+            android:background="#1E90FF"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:id="@+id/current_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大连大学北区宿舍8舍423"
+            android:layout_toRightOf="@+id/current"
+            android:layout_marginLeft="5dp"
+            android:layout_alignTop="@+id/current"
+            android:textSize="14dp"/>
+
+        <ImageButton
+            android:id="@+id/xiugaidizhi"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/monify"/>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/alter_three"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/alter_three_aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:id="@+id/monify_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新地址"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            />
+
+        <EditText
+            android:id="@+id/new_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:layout_marginLeft="8dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_toRightOf="@+id/monify_tv"/>
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/monifyaddress_ensure"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/lfx"
+            android:layout_below="@+id/alter_three_aa"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

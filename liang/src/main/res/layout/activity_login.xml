@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/log_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/log_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/log_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="登录"/>
+
+            <ImageView
+                android:id="@+id/log_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/log_one"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:id="@+id/log_two"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+   >
+
+    <ImageView
+        android:id="@+id/log_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:id="@+id/log_ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/log_logo"
+        android:layout_marginTop="30dp">
+        <TextView
+            android:id="@+id/log_tv_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称:"
+            android:textSize="15sp"
+            android:layout_centerVertical="true"
+            />
+        <EditText
+            android:id="@+id/log_et_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/log_tv_ID"
+            android:ems="15"
+            android:background="@android:drawable/edit_text"
+            android:singleLine="true"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/log_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/log_ID"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/log_tv_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码:"
+            android:textSize="15sp"
+            android:layout_centerVertical="true"
+            />
+        <EditText
+            android:id="@+id/log_et_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/log_tv_pass"
+            android:ems="15"
+            android:background="@android:drawable/edit_text"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/log_ensure"
+        android:layout_below="@+id/log_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <Button
+
+            android:id="@+id/log_ensure_bu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:textSize="19sp"
+            android:background="#00FFFF"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/log_tv_rigister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/log_ensure_bu"
+            android:text="注册"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/sec_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/sec_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/sec_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="二手市场"/>
+
+            <ImageView
+                android:id="@+id/sec_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/sec_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sec_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sec_one"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/sec_two_frame"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/ggg"
+            android:layout_centerHorizontal="true"
+           >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+               >
+
+            <ImageView
+                android:id="@+id/sec_two_frame_iv"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/search"/>
+
+            <EditText
+                android:id="@+id/sec_two_frame_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_two_frame_iv"
+                android:layout_alignBottom="@+id/sec_two_frame_iv"
+                android:hint="请输入商品名称"
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:background="@null"
+
+                android:ems="9"/>
+
+            <ImageButton
+                android:id="@+id/sec_two_deletecontent"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_two_frame_et"
+                android:layout_alignBottom="@+id/sec_two_frame_iv"
+                android:visibility="invisible"
+                android:background="@mipmap/sear_ensure"/>
+
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sec_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/sec_two">
+
+        <Button
+            android:id="@+id/sec_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:text="发布商品"
+            android:layout_marginLeft="13dp"
+            android:background="@mipmap/ibs"
+          />
+
+
+        <Button
+            android:id="@+id/sec_need"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_alignParentRight="true"
+           android:layout_marginRight="13dp"
+            android:background="@mipmap/ibs"
+            android:text="发布需求"/>
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/sec_gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:columnWidth="10dp"
+        android:stretchMode="columnWidth"
+        android:layout_below="@+id/sec_three"
+        android:layout_marginTop="9dp"
+        >
+
+    </GridView>
+
+
+
+</RelativeLayout>

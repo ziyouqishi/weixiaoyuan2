@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+   >
+
+    <RelativeLayout
+        android:id="@+id/score_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/score_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/score_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="我的积分"/>
+
+            <ImageView
+                android:id="@+id/score_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/score_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/score_two"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/score_shuzi"
+            android:layout_width="230dp"
+            android:background="@mipmap/yuanhuan"
+            android:layout_height="230dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/score_tv_shuzi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="积分余额"
+                android:textColor="#40E0D0"
+
+                android:textSize="23sp"/>
+
+                <TextView
+                    android:id="@+id/score_tv2_shuzi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="214"
+                    android:textColor="#00BFFF"
+                    android:layout_below="@+id/score_tv_shuzi"
+                    android:layout_centerHorizontal="true"
+
+                    android:textSize="52sp"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/score_exchange"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/score_shuzi"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:text="去兑换"
+                android:textColor="#00BFFF"
+                android:textSize="23sp"
+                android:background="@mipmap/duihuan"/>
+
+        </RelativeLayout>
+
+        <!--
+        以后补充账单明细，用listView形式
+        -->
+
+      <!--  <RelativeLayout
+            android:id="@+id/score_detail"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#E0E0E0"
+            android:layout_below="@+id/score_exchange"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="账单明细"
+                android:layout_centerVertical="true"
+                android:textSize="19sp"
+                />
+
+        </RelativeLayout>
+-->
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+首界面GridView的每个Item的布局文件
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+
+>
+
+
+    <com.zhimei.customview.RoundImageView
+        android:id="@+id/goods_image"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/aixin"
+
+        />
+    <TextView
+        android:id="@+id/goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goods_image"
+        android:text="数字信号"
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goods_image"
+        android:layout_alignRight="@+id/goods_image"
+        android:textColor="#FF3030"
+        android:textSize="15sp"
+        android:text="¥15.00"/>
+
+    <ImageView
+        android:id="@+id/hengxian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goods_price"
+        android:layout_alignLeft="@+id/goods_image"
+        android:layout_alignRight="@+id/goods_image"
+        android:src="@drawable/henxian"/>
+
+    <TextView
+        android:id="@+id/goods_attention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hengxian"
+        android:layout_alignLeft="@+id/goods_image"
+        android:textSize="13sp"
+        android:text="5人围观"/>
+
+    <TextView
+        android:id="@+id/goods_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hengxian"
+        android:layout_alignRight="@+id/goods_image"
+        android:textSize="13sp"
+        android:text="三天前"/>
+
+
+</RelativeLayout>
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhimei.customview.RoundImageView
+        android:id="@+id/shop_good_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/logo"/>
+
+    <TextView
+        android:id="@+id/shop_good_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shop_good_picture"
+        android:layout_marginLeft="20dp"
+        android:textSize="16sp"
+        android:text="脆皮鸡爪 独立包"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shop_good_picture"
+        android:layout_alignBottom="@+id/shop_good_picture">
+
+    <TextView
+        android:id="@+id/shop_good_sellnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="13sp"
+        android:textColor="#CDB79E"
+        android:text="已售23"/>
+
+        <TextView
+            android:id="@+id/shop_good_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_good_sellnum"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:layout_marginTop="6dp"
+            android:textColor="#FF7256"
+            android:text="5.9"/>
+
+        <TextView
+            android:id="@+id/shop_good_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:layout_marginRight="10dp"
+            android:textColor="#FF7256"
+            android:text="营业中"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shop_good_num"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content">
+
+     <ImageView
+         android:id="@+id/shop_num_jian"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@mipmap/jianhao"/>
+
+        <TextView
+            android:id="@+id/shop_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:layout_margin="4dp"
+            android:textSize="23sp"
+            android:layout_toRightOf="@+id/shop_num_jian"/>
+
+        <ImageView
+            android:id="@+id/shop_num_jia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/shop_num"
+            android:src="@mipmap/jiahao"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

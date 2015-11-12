@@ -1,0 +1,242 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <RelativeLayout
+        android:id="@+id/per_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/per_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/per_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:text="个人中心"/>
+
+            <ImageView
+                android:id="@+id/per_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/per_one"
+        >
+
+        <RelativeLayout
+            android:id="@+id/per_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <RelativeLayout
+                android:id="@+id/per_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/bg"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <com.zhimei.customview.CircleImageView
+                        android:id="@+id/per_iv_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/test"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/per_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="21dp"
+                        android:text="仗义的猴子"
+                        android:layout_below="@+id/per_iv_image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#EE0000"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/per_score"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/per_image"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF">
+                <ImageView
+                    android:id="@+id/per_iv_score"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/jifen"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/per_tv_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/per_iv_score"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_centerVertical="true"
+                    android:text="我的积分"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/per_tradedetail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/per_score"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF">
+                <ImageView
+                    android:id="@+id/per_iv_tradedetail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/jiaoyi"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/per_tv_tradedetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/per_iv_tradedetail"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_centerVertical="true"
+                    android:text="交易详情"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/per_donatedetail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/per_tradedetail"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF">
+                <ImageView
+                    android:id="@+id/per_iv_donatedetail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/donate"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/per_tv_donatedetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/per_iv_donatedetail"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_centerVertical="true"
+                    android:text="捐赠信息"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/per_modifyaddress"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/per_donatedetail"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF">
+                <ImageView
+                    android:id="@+id/per_iv_modifyaddress"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/address"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/per_tv_modifyaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/per_iv_modifyaddress"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_centerVertical="true"
+                    android:text="修改地址"/>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/per_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/per_modifyaddress"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp">
+
+                <Button
+                    android:id="@+id/per_bt_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="登录"
+                    android:textSize="23sp"
+                    android:background="#BFEFFF"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>
