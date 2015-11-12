@@ -3,6 +3,8 @@ package com.zhimei.liang.utitls;
 import android.app.Application;
 import android.content.Context;
 
+import java.util.HashMap;
+
 import cn.bmob.v3.Bmob;
 
 /**
@@ -15,6 +17,15 @@ public class MyApplication extends Application {
     private static boolean signUPSuccess=false;//判断用户是否登录成功
     private static String currentName;
     private static String testUrl;
+    private static HashMap<String,Object> hashmap;//用于在不同的Activity之间传递商品数据。
+
+    public static HashMap<String, Object> getHashmap() {
+        return hashmap;
+    }
+
+    public static void setHashmap(HashMap<String, Object> hashmap) {
+        MyApplication.hashmap = hashmap;
+    }
 
     public static String getTestUrl() {
         return testUrl;

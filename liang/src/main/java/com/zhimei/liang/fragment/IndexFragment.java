@@ -1,4 +1,5 @@
 package com.zhimei.liang.fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -26,6 +27,7 @@ import com.zhimei.liang.utitls.TradeRecord;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import com.zhimei.liang.utitls.SecondHandGoods;
+import com.zhimei.liang.weixiaoyuan.TradeWindowActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -188,7 +190,7 @@ public class IndexFragment extends Fragment {
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
                 // Toast.makeText(MainActivity.this,"item单击事件",Toast.LENGTH_SHORT).show();
                 animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.myanim);
                 ImageView iv = (ImageView) view.findViewById(R.id.goods_image);
@@ -200,7 +202,17 @@ public class IndexFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        Toast.makeText(view.getContext(), "item单击事件", Toast.LENGTH_SHORT).show();
+                       /* if(item_list.get(position).get("publishMan").toString()==null){
+                            Toast.makeText(view.getContext(), "publishMan为空", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else{
+                            Toast.makeText(view.getContext(), item_list.get(position).get("publishMan").toString(), Toast.LENGTH_SHORT).show();
+                        }*/
+                        MyApplication.setHashmap(item_list.get(position));
+                        Intent intent=new Intent(view.getContext(), TradeWindowActivity.class);
+                        startActivity(intent);
+
                     }
 
                     @Override
@@ -258,7 +270,9 @@ public class IndexFragment extends Fragment {
                     map.put("time", dealTime(secondHandGoods.getCreatedAt()));
                     map.put("tradeway", secondHandGoods.getTradeWay());
                     map.put("description", secondHandGoods.getDescription());
+                    map.put("publishMan",secondHandGoods.getPublishMan());
                     map.put("url", secondHandGoods.getPictureFile().getFileUrl(view.getContext()));
+
 
                     /**
                      * 获取缩略图
@@ -343,7 +357,7 @@ public class IndexFragment extends Fragment {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("thumbnailUrl").toString());
+                Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("url").toString());
 
 
                 /**
@@ -357,6 +371,7 @@ public class IndexFragment extends Fragment {
                 maps.put("price","¥ "+map.get("price").toString());
                 maps.put("time",map.get("time").toString());
                 maps.put("description",map.get("description").toString());
+                maps.put("publishMan",map.get("publishMan"));
                 item_list.add(maps);
                 Message message=new Message();
                 message.what=DATACHANGED;

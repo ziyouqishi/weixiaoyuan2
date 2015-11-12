@@ -73,6 +73,7 @@ public class SecondHandGoods extends BmobObject {
 
         this.var_data = var_data;
         this.description = description;
+
     }
 
     public void setDescription(String description) {
