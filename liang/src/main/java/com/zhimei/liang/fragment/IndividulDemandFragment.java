@@ -23,6 +23,7 @@ import com.zhimei.liang.utitls.DonationRecord;
 import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.TradeRecord;
+import com.zhimei.liang.utitls.User;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class IndividulDemandFragment extends Fragment {
     private int loopNum=0;//循环计数
     private int refreshTime=0;//刷新次数的记录
     private BmobQuery<DemandObject> query ;
+    private BmobQuery<User>  queryUser;
+    private String  headPictureUrl;
     private final static int DATACHANGED=1;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private Handler handler=new Handler(){
@@ -176,6 +179,30 @@ public class IndividulDemandFragment extends Fragment {
 
     }
 
+    /**
+     * 根据用户名查询用户的其他信息
+     */
+
+    void queryUserInfomation(){
+        queryUser=new BmobQuery<>();
+        query.addWhereEqualTo("username", MyApplication.getCurrentName());
+        queryUser.findObjects(view.getContext(), new FindListener<User>() {
+            @Override
+            public void onSuccess(List<User> list) {
+                headPictureUrl=list.get(0).getPicture().getFileUrl(view.getContext());
+
+                new LoadUserTask().execute();
+
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+
+    }
+
     void querydata(){
         query.findObjects(view.getContext(), new FindListener<DemandObject>() {
             @Override
@@ -186,6 +213,7 @@ public class IndividulDemandFragment extends Fragment {
                     // map.put("picture",demandObject.getHeadPicture());
                     map.put("descreption", demandObject.getDescreption());
                     map.put("time", dealTime(demandObject.getCreatedAt()));
+
                     al.add(map);
 
                 }
@@ -213,7 +241,7 @@ public class IndividulDemandFragment extends Fragment {
 
 
     class LoadDemands extends AsyncTask<Void,Integer,Boolean> {
-        ProgressDialog progressDialog;
+       private ProgressDialog progressDialog;
         private ArrayList<TradeRecord>  arrayList=new ArrayList<>();
         @Override
         protected void onPreExecute() {
@@ -225,6 +253,10 @@ public class IndividulDemandFragment extends Fragment {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
+            queryUserInfomation();
+
+
+
 
         }
 
@@ -269,7 +301,39 @@ public class IndividulDemandFragment extends Fragment {
 
 
             }
+
             return true;
+
+        }
+    }
+
+    class LoadUserTask extends AsyncTask<Void,Integer,Boolean>{
+        private Bitmap bitmap;
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            bitmap=new FileHelper().getHttpBitmap(headPictureUrl);
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for(int i=0;i<arrayList_map.size();i++){
+                        arrayList_map.get(i).put("picture",bitmap);
+                        Message message=new Message();
+                        message.what=DATACHANGED;
+                        handler.sendMessage(message);
+                    }
+                }
+            }).start();
 
         }
     }

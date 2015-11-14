@@ -270,38 +270,12 @@ public class IndexFragment extends Fragment {
                     map.put("time", dealTime(secondHandGoods.getCreatedAt()));
                     map.put("tradeway", secondHandGoods.getTradeWay());
                     map.put("description", secondHandGoods.getDescription());
-                    map.put("publishMan",secondHandGoods.getPublishMan());
+                    map.put("publishMan", secondHandGoods.getPublishMan());
                     map.put("url", secondHandGoods.getPictureFile().getFileUrl(view.getContext()));
-
-
-                    /**
-                     * 获取缩略图
-                     */
-                    secondHandGoods.getPictureFile().getThumbnailUrl(view.getContext(), 200, 275, 25, new ThumbnailUrlListener() {
-
-                        @Override
-                        public void onSuccess(String s) {
-                            map.put("thumbnailUrl", s);
-                            al.add(map);
-                            loopNum++;
-                            if (loopNum == list.size()) {
-                                new Loadgoods().execute();
-                                loopNum = 0;
-                                Toast.makeText(view.getContext(), "正在查询", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            swipeLayout.setRefreshing(false);
-                            Log.i("liang", s + "   失败");
-
-                        }
-                    });
-
+                    al.add(map);
 
                 }
+                new Loadgoods().execute();
 
 
             }
@@ -313,6 +287,8 @@ public class IndexFragment extends Fragment {
                 swipeLayout.setRefreshing(false);
             }
         });
+
+
     }
 
     /**
@@ -337,6 +313,27 @@ public class IndexFragment extends Fragment {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
+            new Thread(new Runnable() {
+                /**
+                 * 求出item_list从哪个位置上开始是新加载的数据
+                 */
+                int count=item_list.size()-al.size();
+
+                @Override
+                public void run() {
+                    for(int i=0;i<al.size();i++,count++){
+                        Bitmap bitmap=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
+                        item_list.get(count).put("bitmap",bitmap);
+                        Message message=new Message();
+                        message.what=DATACHANGED;
+                        handler.sendMessage(message);
+
+
+                    }
+
+                }
+            }).start();
+
 
         }
 
@@ -357,7 +354,8 @@ public class IndexFragment extends Fragment {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("url").toString());
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
+               // Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("url").toString());
 
 
                 /**

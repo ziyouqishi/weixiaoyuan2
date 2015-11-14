@@ -335,7 +335,7 @@ public class RegisterActivity extends Activity {
         user.setUsername(name);
         user.setPassword(password);
                 //默认电话号码是主键
-        user.setMobilePhoneNumber(phone_number);
+        user.setMobilePhoneNumber("18842647883");
         user.setGrade(0);
         user.setAddress(address);
         user.setPicture(bmobFile);
@@ -368,7 +368,7 @@ public class RegisterActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog=ProgressDialog.show(RegisterActivity.this, "", "正在登录中");
+            progressDialog=ProgressDialog.show(RegisterActivity.this, "", "正在上传数据");
         }
 
         @Override

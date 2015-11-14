@@ -19,8 +19,10 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.zhimei.liang.utitls.DemandObject;
+import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.TradeRecord;
+import com.zhimei.liang.utitls.User;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ public class AllDemandsFragment extends Fragment {
     private int refreshTime=0;//刷新次数的记录
     private BmobQuery<DemandObject> query ;
     private final static int DATACHANGED=1;
+    private BmobQuery<User>  queryUser;
+    private ArrayList<String>  listHeadPicture;//存储发布者的头像Url
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private Handler handler=new Handler(){
         @Override
@@ -171,8 +175,6 @@ public class AllDemandsFragment extends Fragment {
 
             }
         });
-
-
     }
 
     /**
@@ -186,7 +188,7 @@ public class AllDemandsFragment extends Fragment {
                 for (DemandObject demandObject : list) {
                     HashMap<String, Object> map = new HashMap<String, Object>();
                     map.put("goodname", demandObject.getGoodName());
-                    // map.put("picture",demandObject.getHeadPicture());
+                    map.put("publishMan", demandObject.getPublishMan());
                     map.put("descreption", demandObject.getDescreption());
                     map.put("time", dealTime(demandObject.getCreatedAt()));
                     al.add(map);
@@ -202,6 +204,37 @@ public class AllDemandsFragment extends Fragment {
 
             }
         });
+    }
+
+    /**
+     * 得到所有信息发布人的头像url
+     * @return
+     */
+
+    void getPublishmanPictureUrl(){
+        listHeadPicture=new ArrayList<>();
+        queryUser=new BmobQuery<>();
+        for(HashMap hashMap:al){
+            queryUser.addWhereEqualTo("username", hashMap.get("publishMan"));
+            queryUser.findObjects(view.getContext(), new FindListener<User>() {
+                @Override
+                public void onSuccess(List<User> list) {
+                    String url = list.get(0).getPicture().getFileUrl(view.getContext());
+                    listHeadPicture.add(url);
+                    Log.i("liang",url+"张佳亮");
+
+                }
+
+                @Override
+                public void onError(int i, String s) {
+
+                }
+            });
+
+
+
+        }
+
     }
 
     /**
@@ -228,6 +261,34 @@ public class AllDemandsFragment extends Fragment {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
+            Log.i("liang", "今天天气真好");
+            Log.i("liang",listHeadPicture.size()+"             kioopo");
+            Log.i("liang", "今天天气不错");
+           /* for(int i=0;i<listHeadPicture.size();i++){
+                Log.i("liang",listHeadPicture.get(i));
+
+            }*/
+
+/*            new Thread(new Runnable() {
+                *//**
+                 * 求出item_list从哪个位置上开始是新加载的数据
+                 *//*
+                int count=arrayList_map.size()-al.size();
+
+                @Override
+                public void run() {
+                    for(int i=0;i<al.size();i++,count++){
+                        Bitmap bitmap=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
+                        arrayList_map.get(count).put("picture",bitmap);
+                        Message message=new Message();
+                        message.what=DATACHANGED;
+                        handler.sendMessage(message);
+
+
+                    }
+
+                }
+            }).start();*/
 
         }
 
@@ -246,9 +307,6 @@ public class AllDemandsFragment extends Fragment {
         @Override
         protected Boolean doInBackground(Void... params) {
             for(HashMap map:al){
-              /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
-                        + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                // Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("thumbnailUrl").toString());
 
                 /**
                  * 后面要换成真正的头像
@@ -272,6 +330,8 @@ public class AllDemandsFragment extends Fragment {
 
 
             }
+
+            getPublishmanPictureUrl();
             return true;
 
         }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -220,41 +221,9 @@ public class TradeRecordActivity extends Activity {
                                 map.put("time", dealTime(secondHandGoods.getCreatedAt()));
                                 map.put("tradeway", secondHandGoods.getTradeWay());
                                 map.put("url", secondHandGoods.getPictureFile().getFileUrl(TradeRecordActivity.this));
-
-
-                                /**
-                                 * 获取缩略图地址
-                                 */
-                                secondHandGoods.getPictureFile().getThumbnailUrl(TradeRecordActivity.this, 200, 275, 15, new ThumbnailUrlListener() {
-
-                                    @Override
-                                    public void onSuccess(String s) {
-                                        map.put("thumbnailUrl", s);
-                                        al.add(map);
-                                        loopNum++;
-                                        if (loopNum == list.size()) {
-                                            new Loadgoods().execute();
-                                            loopNum=0;
-                                            Toast.makeText(TradeRecordActivity.this, "正在查询", Toast.LENGTH_SHORT).show();
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onFailure(int i, String s) {
-                                        swipeLayout.setRefreshing(false);
-                                        Log.i("liang", s + "   失败");
-
-                                    }
-
-                                });
-
-
+                                al.add(map);
                             }
-
-
-
-
+                            new Loadgoods().execute();
                         }
 
                         @Override
@@ -308,6 +277,26 @@ public class TradeRecordActivity extends Activity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
+            new Thread(new Runnable() {
+                /**
+                 * 求出item_list从哪个位置上开始是新加载的数据
+                 */
+                int count=mapArrayList.size()-al.size();
+
+                @Override
+                public void run() {
+                    for(int i=0;i<al.size();i++,count++){
+                        Bitmap bitmap=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
+                        mapArrayList.get(count).put("picture",bitmap);
+                        Message message=new Message();
+                        message.what=DATACHANGED;
+                        handler.sendMessage(message);
+
+
+                    }
+
+                }
+            }).start();
 
         }
 
@@ -328,7 +317,7 @@ public class TradeRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("thumbnailUrl").toString());
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
 
 
                 /**

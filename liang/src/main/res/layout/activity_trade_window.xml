@@ -192,7 +192,7 @@
                 android:id="@+id/trade_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
+               <ImageView
                     android:id="@+id/trade_goods_picture"
                     android:layout_width="350dp"
                     android:layout_height="466dp"
@@ -302,8 +302,32 @@
                         android:padding="10dp"
                         android:textSize="18sp"
 
-
                         />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/good_miaoshu"
+                        android:layout_marginTop="6dp">
+                        <ImageView
+                            android:id="@+id/iv_address"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@mipmap/didian"/>
+
+                        <TextView
+                            android:id="@+id/tv_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/iv_address"
+                            android:text="泊美，植物纯净系列，全新，因为买多了，"
+                            android:padding="10dp"
+                            android:textSize="15sp"
+
+
+                            />
+
+
+                    </RelativeLayout>
 
 
                 </RelativeLayout>

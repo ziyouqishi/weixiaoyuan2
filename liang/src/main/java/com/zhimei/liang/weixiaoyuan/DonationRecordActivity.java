@@ -3,6 +3,7 @@ package com.zhimei.liang.weixiaoyuan;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -256,6 +257,26 @@ public class DonationRecordActivity extends Activity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
+            new Thread(new Runnable() {
+                /**
+                 * 求出item_list从哪个位置上开始是新加载的数据
+                 */
+                int count=mapArrayList.size()-al.size();
+
+                @Override
+                public void run() {
+                    for(int i=0;i<al.size();i++,count++){
+                        Bitmap bitmap=new FileHelper().getHttpBitmap(al.get(i).get("thumbnailUrl").toString());
+                        mapArrayList.get(count).put("picture",bitmap);
+                        Message message=new Message();
+                        message.what=DATACHANGED;
+                        handler.sendMessage(message);
+
+
+                    }
+
+                }
+            }).start();
 
         }
 
@@ -276,7 +297,7 @@ public class DonationRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("thumbnailUrl").toString());
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
 
 
                 /**
