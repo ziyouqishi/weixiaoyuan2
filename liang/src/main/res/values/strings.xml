@@ -46,6 +46,8 @@
     <string name="title_activity_alter_address">AlterAddressActivity</string>
     <string name="title_activity_donation_record">DonationRecordActivity</string>
     <string name="title_activity_trade_window">TradeWindowActivity</string>
+    <string name="title_activity_query_goods">QueryGoodsActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
 
 
 </resources>

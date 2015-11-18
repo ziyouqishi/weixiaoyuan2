@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/query_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageButton
+                android:id="@+id/query_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/query_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:text="查询列表"/>
+
+            <ImageButton
+                android:id="@+id/query_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/reg_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+
+                android:background="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/query_swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/query_one"
+        >
+        <GridView
+            android:id="@+id/query_gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:columnWidth="10dp"
+            android:stretchMode="columnWidth"
+            >
+
+        </GridView>
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>

@@ -18,16 +18,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bmob.pay.tool.BmobPay;
+import com.bmob.pay.tool.PayListener;
 import com.zhimei.liang.customview.RoundImageView;
 import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
+import com.zhimei.liang.utitls.SecondHandGoods;
+import com.zhimei.liang.utitls.ShoppingTable;
 import com.zhimei.liang.utitls.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.DeleteListener;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.ThumbnailUrlListener;
 
 public class TradeWindowActivity extends Activity {
@@ -90,7 +97,7 @@ public class TradeWindowActivity extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SmsManager smsManager=SmsManager.getDefault();
-                        smsManager.sendTextMessage(phoneNumber,null,message,null,null);
+                        smsManager.sendTextMessage(phoneNumber, null, message, null, null);
                     }
                 });
 
@@ -140,10 +147,33 @@ public class TradeWindowActivity extends Activity {
             }
         });
 
+        /**
+         * 支付宝支付，支付宝支付成功后，要删除数据
+         */
+
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(TradeWindowActivity.this);
+                dialog.setTitle("支付说明");
+                dialog.setIcon(R.mipmap.zhifubao);
+                dialog.setMessage("亲爱的用户，你将向本品台支付人民币" + hashMap.get("price") + "元，支付后，本平台将立刻派送" +
+                        "配货人员，将你所需要的商品，送到你的住址。祝你购物愉快");
+                dialog.setCancelable(false);
 
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pay();
+                    }
+                });
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                dialog.show();
             }
         });
 
@@ -159,18 +189,27 @@ public class TradeWindowActivity extends Activity {
         et_goodPrice.setText(hashMap.get("price").toString());
         et_time.setText(hashMap.get("time").toString());
         goodPicture.setImageBitmap((Bitmap) hashMap.get("bitmap"));
+        /**
+         * 查询用户信息
+         */
         getPublishManInformation();
-
-
     }
 
     /**
      * 通过查询获取发布人的一些信息
      */
     void getPublishManInformation(){
+        String publishMan;
+        if(hashMap.get("publishMan").toString().equals("")){
+            publishMan="11";
+        }
+        else{
+            publishMan=hashMap.get("publishMan").toString();
+        }
+
         query=new BmobQuery<User>();
         progressDialog=ProgressDialog.show(TradeWindowActivity.this, "", "正在连接服务器");
-        query.addWhereEqualTo("username",hashMap.get("publishMan").toString());
+        query.addWhereEqualTo("username",publishMan);
         query.findObjects(TradeWindowActivity.this, new FindListener<User>() {
             @Override
             public void onSuccess(List<User> list) {
@@ -185,21 +224,19 @@ public class TradeWindowActivity extends Activity {
                 list.get(0).getPicture().getThumbnailUrl(TradeWindowActivity.this, 200, 275, 15, new ThumbnailUrlListener() {
                     @Override
                     public void onSuccess(String s) {
-                        headPictureUrl=s;
+                        headPictureUrl = s;
+                        /**
+                         * 加载缩略图
+                         */
                         new LoadPicture().execute();
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
+                        progressDialog.dismiss();
 
                     }
                 });
-
-
-
-
-
-
             }
 
             @Override
@@ -236,6 +273,113 @@ public class TradeWindowActivity extends Activity {
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
         }
+    }
+
+    /**
+     * 支付结束后要从后台删除数据,删除之前，必须要通过查询获取商品id
+     */
+
+    void queryDataThenDelete(){
+         BmobQuery<SecondHandGoods> query_decond=new BmobQuery<>() ;
+        query_decond.addWhereEqualTo("name",hashMap.get("name").toString());
+        query_decond.addWhereEqualTo("description",hashMap.get("description").toString());
+        query_decond.addWhereEqualTo("publishMan",MyApplication.getCurrentName());
+        query_decond.findObjects(TradeWindowActivity.this, new FindListener<SecondHandGoods>() {
+            @Override
+            public void onSuccess(List<SecondHandGoods> list) {
+                /**
+                 * 删除数据
+                 * 将购买的信息表传至服务器
+                 */
+               // deleteData(list.get(0).getObjectId());
+                loadShoppingTable((ArrayList) list);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Log.i("liang", s);
+
+            }
+        });
+    }
+
+    /**
+     * 根据查询获得的id删除数据
+     * @param id
+     */
+
+    void deleteData(String id){
+        SecondHandGoods secondHandGoods=new SecondHandGoods();
+        secondHandGoods.setObjectId(id);
+        secondHandGoods.delete(TradeWindowActivity.this, new DeleteListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
+    }
+
+    void pay(){
+        new BmobPay(TradeWindowActivity.this).pay(0.02, hashMap.get("name").toString(), new PayListener() {
+            @Override
+            public void orderId(String s) {
+                Log.i("liang", s);
+
+            }
+
+            @Override
+            public void succeed() {
+                queryDataThenDelete();
+                Toast.makeText(TradeWindowActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void fail(int i, String s) {
+                Toast.makeText(TradeWindowActivity.this, s, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void unknow() {
+
+            }
+        });
+
+    }
+
+    /**
+     * 将购物信息上传至服务器
+     * @param arrayList
+     */
+    void loadShoppingTable(ArrayList<SecondHandGoods> arrayList){
+        ShoppingTable shoppingTable =new ShoppingTable();
+        shoppingTable.setGoodName(arrayList.get(0).getName());
+        shoppingTable.setBuyManName(MyApplication.getCurrentName());
+        shoppingTable.setGoodDescription(arrayList.get(0).getDescription());
+        shoppingTable.setTradeWay(arrayList.get(0).getTradeWay());
+        shoppingTable.setGoodPictureFile(arrayList.get(0).getPictureFile());
+        shoppingTable.setGoodID(arrayList.get(0).getObjectId());
+        shoppingTable.setGoodPrice(arrayList.get(0).getPrice());
+        shoppingTable.save(TradeWindowActivity.this, new SaveListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
+
+
+
     }
 
 }

@@ -3,6 +3,7 @@ package com.zhimei.liang.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.zhimei.liang.weixiaoyuan.Goods_release_Activity;
 import com.zhimei.liang.weixiaoyuan.Need_release_Activity;
+import com.zhimei.liang.weixiaoyuan.QueryGoodsActivity;
 import com.zhimei.liang.weixiaoyuan.R;
 
 
@@ -54,12 +56,17 @@ public class SecHandFragment extends Fragment {
         search_ensdure=(ImageButton)view.findViewById(R.id.sec_two_deletecontent);
         fabuxinxi=(Button)view.findViewById(R.id.sec_publish);
         fabuxuqiu=(Button)view.findViewById(R.id.sec_need);
+        final String category[]={"书籍","手机","校园代步","体育健身","电脑","衣服鞋帽","数码产品","其他"};
 
         gv.setAdapter(type_adapter);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(view.getContext(), "根据不同item跳转到不同页面", Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(view.getContext(), QueryGoodsActivity.class);
+                intent.putExtra("queryData", category[position]);
+                intent.putExtra("way","category");
+                startActivity(intent);
             }
         });
 
@@ -73,7 +80,17 @@ public class SecHandFragment extends Fragment {
         search_ensdure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(view.getContext(), "正在进行搜索", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(search_content.getText().toString())){
+                    Toast.makeText(view.getContext(), "请输入你需要查询的数据", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(view.getContext(), "正在进行搜索", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(view.getContext(), QueryGoodsActivity.class);
+                    intent.putExtra("queryData",search_content.getText().toString());
+                    intent.putExtra("way","name");
+                    startActivity(intent);
+                }
+
             }
         });
 

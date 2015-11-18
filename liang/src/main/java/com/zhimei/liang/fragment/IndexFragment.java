@@ -191,6 +191,7 @@ public class IndexFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
+
                 // Toast.makeText(MainActivity.this,"item单击事件",Toast.LENGTH_SHORT).show();
                 animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.myanim);
                 ImageView iv = (ImageView) view.findViewById(R.id.goods_image);
@@ -202,15 +203,8 @@ public class IndexFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                       /* if(item_list.get(position).get("publishMan").toString()==null){
-                            Toast.makeText(view.getContext(), "publishMan为空", Toast.LENGTH_SHORT).show();
-
-                        }
-                        else{
-                            Toast.makeText(view.getContext(), item_list.get(position).get("publishMan").toString(), Toast.LENGTH_SHORT).show();
-                        }*/
                         MyApplication.setHashmap(item_list.get(position));
-                        Intent intent=new Intent(view.getContext(), TradeWindowActivity.class);
+                        Intent intent = new Intent(view.getContext(), TradeWindowActivity.class);
                         startActivity(intent);
 
                     }
@@ -220,7 +214,13 @@ public class IndexFragment extends Fragment {
 
                     }
                 });
-                iv.startAnimation(animation);
+                if(MyApplication.isSignUPSuccess()){
+                    iv.startAnimation(animation);
+                }
+                else{
+                    Toast.makeText(view.getContext(),"亲，请登录",Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }
@@ -238,12 +238,11 @@ public class IndexFragment extends Fragment {
         query.count(view.getContext(), SecondHandGoods.class, new CountListener() {
             @Override
             public void onSuccess(int i) {
-                Log.i("liang",i+"   hyju");
                 if(i>0){
                     querydata();
                 }
                 else{
-                    Toast.makeText(view.getContext(), "你还没有捐赠物品，赶紧去捐赠物品吧☺", Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getContext(), "当前还没有任何商品哦，赶紧去发布商品吧:-D", Toast.LENGTH_LONG).show();
                     swipeLayout.setRefreshing(false);
                 }
             }
