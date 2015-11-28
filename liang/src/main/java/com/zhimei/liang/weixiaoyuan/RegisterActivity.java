@@ -53,6 +53,8 @@ public class RegisterActivity extends Activity {
     private ImageButton index,back;
     private ProgressDialog progressDialog;
 
+    private Uri uri_photo;
+
     public static String APPID = "a91ea9411de0d54e0eaf0311d2a9fec3";
 
 
@@ -99,6 +101,8 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "亲，请填写密码", Toast.LENGTH_SHORT).show();
                 } else if (address.equals("")) {
                     Toast.makeText(RegisterActivity.this, "亲，请填写地址", Toast.LENGTH_SHORT).show();
+                }else if(picture==null) {
+                    Toast.makeText(RegisterActivity.this, "请点击上面的图标选择头像", Toast.LENGTH_SHORT).show();
                 } else {
                    loadFileandSignUp();
                    // new SignUpTast().execute();
@@ -122,15 +126,12 @@ public class RegisterActivity extends Activity {
         bmobFile.uploadblock(RegisterActivity.this, new UploadFileListener() {
             @Override
             public void onSuccess() {
-                Toast.makeText(RegisterActivity.this, "图片上传成功", Toast.LENGTH_SHORT).show();
                 sign();
 
             }
 
             @Override
             public void onFailure(int i, String s) {
-                Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
-                Log.i("jialiang", s);
                 /**
                  * 图片上传失败时，关掉进度条
                  */
@@ -154,7 +155,10 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "亲，请填写密码", Toast.LENGTH_SHORT).show();
                 } else if (address.equals("")) {
                     Toast.makeText(RegisterActivity.this, "亲，请填写地址", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if(picture==null) {
+                    Toast.makeText(RegisterActivity.this, "请点击上面的图标选择头像", Toast.LENGTH_SHORT).show();
+                }
+                else{
                     registerPage.show(RegisterActivity.this);
                 }
 
@@ -168,15 +172,11 @@ public class RegisterActivity extends Activity {
                             String phone = (String) phoneMap.get("phone");
                             Log.i("liang", phone);
                             // Toast.makeText(RegisterActivity.this,RegisterPage.etPhoneNum.getText(),Toast.LENGTH_SHORT).show();
-                            Toast.makeText(RegisterActivity.this, phone, Toast.LENGTH_SHORT).show();
                             phone_number = phone;
 
                             //进行注册
-                            sign();
+                            loadFileandSignUp();
 
-                            Log.i("jialiang", address);
-                            Log.i("jialiang", name);
-                            //SMSSDK.submitUserInfo("123", "jialiang", null, "", "18842647883");
                         }
                     }
 
@@ -268,23 +268,42 @@ public class RegisterActivity extends Activity {
                 if (res == RESULT_OK) {
                     try {
                         Uri uri = data.getData();
+                        Log.i("jialiang","哈哈"+uri.toString());
+
                         Bitmap bit = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
                         picturePath=RealPath.getPath(RegisterActivity.this,uri);
-                        Log.i("jialiang",picturePath);
+                        Log.i("jialiang","嘻嘻"+picturePath);
                         Toast.makeText(RegisterActivity.this,picturePath,Toast.LENGTH_LONG).show();
                         picture=bit;
                         addPhoto.setImageBitmap(picture);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        /**
+                         * 因为htc手机的兼容问题，所以在CROP_PHOTO中抛异常，代码无法正常运行。
+                         * 因此该uri来自上一个活动中，而并非截图后的uri
+                         */
+                        try{
+                            Bitmap bit = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri_photo));
+                            picture=bit;
+                            addPhoto.setImageBitmap(picture);
+                        }
+                        catch (Exception e1){
+
+                        }
+                        picturePath=RealPath.getPath(RegisterActivity.this,uri_photo);
                     }
                 }
+                else{
+                    Log.i("liang","截图失败");
+                }
+
                 break;
             case CHOOSE_PHOTO_CROP:
                 /**
                  * 对相册中的图片进行裁剪，首先要得到被选中图片的URI
                  */
                 if (res == RESULT_OK) {
-                    Uri uri_photo = data.getData();
+                  //  Uri uri_photo = data.getData();
+                    uri_photo = data.getData();
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(uri_photo, "image/*");
                     intent.putExtra("scale", true);
@@ -307,7 +326,6 @@ public class RegisterActivity extends Activity {
     private void choosephoto() {
         output = new File(Environment
                 .getExternalStorageDirectory(), "output_image2.jpg");
-        Log.i("jialiang",output.getPath());
         try {
             if (output.exists()) {
                 output.delete();
@@ -320,8 +338,6 @@ public class RegisterActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");//相片类型
         intent.putExtra("MediaStore.EXTRA_OUTPUT", imageUri);
-       /* intent.putExtra("outputX", 300);
-        intent.putExtra("outputY", 400);*/
         startActivityForResult(intent, CHOOSE_PHOTO_CROP);
 
     }
@@ -335,7 +351,7 @@ public class RegisterActivity extends Activity {
         user.setUsername(name);
         user.setPassword(password);
                 //默认电话号码是主键
-        user.setMobilePhoneNumber("18842647883");
+        user.setMobilePhoneNumber(phone_number);
         user.setGrade(0);
         user.setAddress(address);
         user.setPicture(bmobFile);
@@ -345,8 +361,8 @@ public class RegisterActivity extends Activity {
             public void onSuccess() {
                 // TODO Auto-generated method stub
                 progressDialog.dismiss();
-                Toast.makeText(RegisterActivity.this, "成功了", Toast.LENGTH_SHORT).show();
-                Log.i("jialiang", "成功了");
+                finish();
+
             }
 
             @Override

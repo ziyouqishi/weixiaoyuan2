@@ -5,16 +5,15 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="50dp"
+    android:layout_height="55dp"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="#FFFAFA"
+        android:paddingTop="8dp"
         >
-
-
 
         <RelativeLayout
             android:id="@+id/all"
@@ -25,8 +24,8 @@
             >
             <ImageButton
                 android:id="@+id/all_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:layout_centerHorizontal="true"
                 android:background="@mipmap/all"
                 android:clickable="false"
@@ -52,8 +51,8 @@
         >
         <ImageButton
             android:id="@+id/sch_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_centerHorizontal="true"
             android:background="@mipmap/chaoshi"
             android:clickable="false"
@@ -82,8 +81,8 @@
         >
         <ImageButton
             android:id="@+id/sec_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_centerHorizontal="true"
             android:background="@mipmap/second"
             android:clickable="false"
@@ -109,8 +108,8 @@
         >
         <ImageButton
             android:id="@+id/don_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_centerHorizontal="true"
             android:background="@mipmap/aixin"
             android:clickable="false"
@@ -139,8 +138,8 @@
 
         <ImageButton
             android:id="@+id/per_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_centerHorizontal="true"
             android:background="@mipmap/touxiang"
 

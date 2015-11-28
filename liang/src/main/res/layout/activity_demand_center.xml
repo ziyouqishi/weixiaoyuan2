@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical" >
     <RelativeLayout
         android:id="@+id/need_one"
@@ -29,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="需求中心"/>
 
             <ImageButton
@@ -51,7 +51,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="40.0dip"
-        android:background="#C0C0C0" >
+        >
 
         <TextView
             android:id="@+id/text1"

@@ -2,6 +2,7 @@ package com.zhimei.liang.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,18 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bmob.pay.tool.BmobPay;
+import com.bmob.pay.tool.PayListener;
+import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyAdapter;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.ShopGoods;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
 import com.zhimei.liang.weixiaoyuan.R;
 
 public class LearnToolsFragment extends Fragment {
@@ -25,6 +32,7 @@ public class LearnToolsFragment extends Fragment {
     private  View view;
     private ImageButton buy;
     private final static int TEST=0;
+    private  MyAdapter goods_adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,11 +50,18 @@ public class LearnToolsFragment extends Fragment {
         buy.setVisibility(View.INVISIBLE);
         int test=R.drawable.goods;
 
-
+/*
         for(int i=0;i<15;i++){
-            ShopGoods shopGoods=new ShopGoods(test,"营业中","已售34份","¥ 43.8","壁纸");
+            ShopGoods shopGoods=new ShopGoods(test,"营业中","已售34份","¥ 2.5","壁纸");
             al_goods.add(shopGoods);
-        }
+        }*/
+
+        ShopGoods shopGoods1=new ShopGoods(R.mipmap.study1,"营业中","已售24份","¥ 56","工程三角板全套");
+        ShopGoods shopGoods2=new ShopGoods(R.mipmap.study2,"营业中","已售14份","¥ 96","钢笔");
+        ShopGoods shopGoods3=new ShopGoods(R.mipmap.study3,"营业中","已售240份","¥ 2.5","笔记本");
+        al_goods.add(shopGoods1);
+        al_goods.add(shopGoods2);
+        al_goods.add(shopGoods3);
 
         for(int j=0;j<al_goods.size();j++){
             HashMap<String,Object> map=new HashMap<>();
@@ -60,7 +75,7 @@ public class LearnToolsFragment extends Fragment {
 
         }
 
-        MyAdapter goods_adapter=new MyAdapter(view.getContext(),al_goods);
+        goods_adapter=new MyAdapter(view.getContext(),al_goods);
 
 
         //实现接口，并且重写方法。
@@ -82,7 +97,38 @@ public class LearnToolsFragment extends Fragment {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MyApplication.getContext(), "进入结算界面", Toast.LENGTH_SHORT).show();
+                Set<Integer> set = goods_adapter.totalPriceMap.keySet();
+                Iterator<Integer> it = set.iterator();
+                float total=0;
+                while (it.hasNext()) {
+                    Float price=goods_adapter.totalPriceMap.get((Integer)it.next());
+                    total+=price;
+                }
+
+                Toast.makeText(MyApplication.getContext(),total+"", Toast.LENGTH_SHORT).show();
+                new BmobPay(getActivity()).pay(total, "商品总价", new PayListener() {
+                    @Override
+                    public void orderId(String s) {
+                        Log.i("liang", s);
+
+                    }
+
+                    @Override
+                    public void succeed() {
+                        new FileHelper().storeUpScore(view.getContext(), 3);
+
+                    }
+
+                    @Override
+                    public void fail(int i, String s) {
+
+                    }
+
+                    @Override
+                    public void unknow() {
+
+                    }
+                });
             }
         });
 

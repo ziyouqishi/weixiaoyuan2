@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="商品信息"/>
 
             <ImageButton
@@ -84,7 +85,7 @@
                     android:layout_below="@+id/all_icon"
                     android:layout_centerHorizontal="true"
                     android:text="短信联系"
-                    android:textColor="#FF4040"
+                    android:textColor="#5CACEE"
                     android:textSize="12sp"/>
 
             </RelativeLayout>
@@ -112,7 +113,7 @@
                     android:layout_below="@+id/sch_icon"
                     android:layout_centerHorizontal="true"
                     android:text="电话联系"
-                    android:textColor="#FF4040"
+                    android:textColor="#5CACEE"
                     android:textSize="12sp"/>
 
             </RelativeLayout>
@@ -141,11 +142,11 @@
                     android:layout_below="@+id/sec_icon"
                     android:layout_centerHorizontal="true"
                     android:text="在线支付"
-                    android:textColor="#FF4040"
+                    android:textColor="#5CACEE"
                     android:textSize="12sp"/>
             </RelativeLayout>
 
-
+<!--
             <RelativeLayout
                 android:id="@+id/trade_windowation"
                 android:layout_width="0dp"
@@ -168,9 +169,9 @@
                     android:layout_below="@+id/trade_window_icon"
                     android:layout_centerHorizontal="true"
                     android:text="聊一聊"
-                    android:textColor="#FF4040"
+                    android:textColor="#5CACEE"
                     android:textSize="12sp"/>
-            </RelativeLayout>
+            </RelativeLayout>-->
 
 
 
@@ -245,10 +246,11 @@
                             android:id="@+id/goods_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="泊美沁乳液"
+                            android:text="泊美沁液"
                             android:textSize="20sp"
                             android:textColor="#EE3B3B"
-                           android:layout_alignParentBottom="true"
+                            android:layout_alignParentBottom="true"
+                           android:layout_marginBottom="3dp"
                             />
 
                     </RelativeLayout>

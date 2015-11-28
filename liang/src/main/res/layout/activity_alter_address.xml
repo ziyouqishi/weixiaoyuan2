@@ -14,12 +14,12 @@
             android:layout_centerVertical="true"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/alter_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
+                android:background="@mipmap/backhome"
                 />
             <TextView
                 android:id="@+id/alter_name"
@@ -27,16 +27,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="修改地址"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/alter_index"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/reg_back"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
+                android:background="@mipmap/back"
                 />
 
 

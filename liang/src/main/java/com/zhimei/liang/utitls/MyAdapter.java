@@ -1,6 +1,7 @@
 package com.zhimei.liang.utitls;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by 张佳亮 on 2015/10/13.
@@ -22,11 +24,15 @@ public class MyAdapter extends BaseAdapter {
     private ImageButton buy;
     private ArrayList<ShopGoods> al_goods;
     private int num;
+    public HashMap<Integer,Float> totalPriceMap;
+
+
 
     public MyAdapter(Context context,ArrayList al) {
         super();
         al_goods=al;
         this.mInflater = LayoutInflater.from(context);
+        totalPriceMap=new HashMap<>();
        view=LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.fragment_live_tools, null);
     }
 
@@ -48,9 +54,12 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
+        String color[]={"#836FFF","#8968CD","#76EE00","#7B68EE","#551A8B"};
+
         buy=(ImageButton)view.findViewById(R.id.already_choosed);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.shopitem,null);
+           // convertView.setBackgroundColor(Color.parseColor(color[position]));
             holder = new ViewHolder();
             /**得到各个控件的对象*/
             holder.name = (TextView) convertView.findViewById(R.id.shop_good_name);
@@ -78,13 +87,11 @@ public class MyAdapter extends BaseAdapter {
 
                 //此时onAddButtonListener的值为LearnToolsFragment中set方法参数中的对象，并且该类重写了onChange（）方法。
                 onAddButtonListener.onChange();
-                buy.setVisibility(View.VISIBLE);
                 num = al_goods.get(position).getBuynum();
                 ++num;
                 al_goods.get(position).setBuynum(num);
                 holder.num.setText(al_goods.get(position).getBuynum() + "");
-
-               // MyApplication.flag=true;
+                totalPriceMap.put(position,num*Float.parseFloat(al_goods.get(position).getPrice().substring(2)));
             }
         });
 
@@ -92,7 +99,20 @@ public class MyAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                if(al_goods.get(position).getBuynum()==1){
+
+                /**
+                 * 判断所有的Item的商品数量都为0，全部为0，则隐藏购买的按钮。
+                 */
+                boolean flagExist=true;
+
+                for(ShopGoods shopGoods:al_goods){
+                    if(shopGoods.getBuynum()>=2){
+                        flagExist=false;
+                        break;
+                    }
+                }
+
+                if(flagExist){
                     onDecreaseListerer.disappear();
                 }
 
@@ -101,6 +121,7 @@ public class MyAdapter extends BaseAdapter {
                     --num;
                     al_goods.get(position).setBuynum(num);
                     holder.num.setText(al_goods.get(position).getBuynum() + "");
+                    totalPriceMap.put(position, num * Float.parseFloat(al_goods.get(position).getPrice().substring(2)));
                 }
             }
         });

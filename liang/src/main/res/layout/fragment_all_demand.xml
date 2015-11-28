@@ -13,7 +13,8 @@
             android:id="@+id/all_demand_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
 
         </ListView>
     </android.support.v4.widget.SwipeRefreshLayout>

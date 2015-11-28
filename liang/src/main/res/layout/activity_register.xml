@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="23dp"
+                android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="注册账号"/>
 
             <ImageButton
@@ -202,6 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="15"
+                android:inputType="textPassword"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginRight="20dp"
                 android:singleLine="true"

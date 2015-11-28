@@ -1,6 +1,7 @@
 package com.zhimei.liang.weixiaoyuan;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,11 +9,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -24,8 +22,6 @@ import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.SecondHandGoods;
 import com.zhimei.liang.utitls.TradeRecord;
-import com.zhimei.liang.weixiaoyuan.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +39,7 @@ public class QueryGoodsActivity extends Activity {
     private final static int DATACHANGED=1;
     private int refreshTime=0;//刷新次数的记录
     private String queryData;
+    private ProgressDialog progressDialog;
     private String way;
     private Handler handler=new Handler(){
         @Override
@@ -50,6 +47,7 @@ public class QueryGoodsActivity extends Activity {
             super.handleMessage(msg);
             switch(msg.what){
                 case DATACHANGED:
+                    progressDialog.dismiss();
                     goods_adapter.notifyDataSetChanged();
             }
         }
@@ -63,6 +61,10 @@ public class QueryGoodsActivity extends Activity {
     }
 
     void initViews(){
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("正在加载数据，请稍后");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
         swipeLayout=(SwipeRefreshLayout)findViewById(R.id.query_swipe_container);
         gridview=(GridView)findViewById(R.id.query_gridview);
         Intent intent=getIntent();
@@ -113,6 +115,9 @@ public class QueryGoodsActivity extends Activity {
             public void onRefresh() {
                 swipeLayout.setRefreshing(true);
                 if (refreshTime == 0) {
+                    mapArrayList.clear();
+                    goods_adapter.notifyDataSetChanged();
+
                     queryData(queryData);
 
                 } else {
@@ -184,7 +189,6 @@ public class QueryGoodsActivity extends Activity {
 
                             }
 
-
                         }
 
                         @Override
@@ -194,6 +198,7 @@ public class QueryGoodsActivity extends Activity {
                     });
 
                 } else {
+                    progressDialog.dismiss();
                     Toast.makeText(QueryGoodsActivity.this, "抱歉，你查询的数据不存在", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -261,7 +266,7 @@ public class QueryGoodsActivity extends Activity {
         @Override
         protected Boolean doInBackground(Void... params) {
             for(HashMap map:al){
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.nullpicture);
                 /**4
                  * 每次得到数据，边将数据加载进simpleAdapter的数据院中
                  * 并用handler通知ListView数据更新

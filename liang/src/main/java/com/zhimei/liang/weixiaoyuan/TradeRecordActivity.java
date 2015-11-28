@@ -52,6 +52,7 @@ public class TradeRecordActivity extends Activity {
     private  SimpleAdapter simpleAdapter;
     private SwipeRefreshLayout swipeLayout;
     private int loopNum=0;//循环计数
+    private ProgressDialog progressDialog;
     private int refreshTime=0;//刷新次数的记录
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private final static int DATACHANGED=1;
@@ -61,6 +62,7 @@ public class TradeRecordActivity extends Activity {
             super.handleMessage(msg);
             switch(msg.what){
                 case DATACHANGED:
+                    progressDialog.dismiss();
                     simpleAdapter.notifyDataSetChanged();
             }
         }
@@ -74,6 +76,12 @@ public class TradeRecordActivity extends Activity {
 
     }
     void initViews(){
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("正在加载数据，请稍后");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+        query();
+
         trList=new ArrayList<TradeRecord>();
         mapArrayList=new ArrayList<>();
         name=(TextView)findViewById(R.id.trade_good_name);
@@ -96,6 +104,9 @@ public class TradeRecordActivity extends Activity {
                 Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
                if(refreshTime==0) {
+                   mapArrayList.clear();
+                   simpleAdapter.notifyDataSetChanged();
+
                    query();
 
                 }
@@ -134,11 +145,11 @@ public class TradeRecordActivity extends Activity {
         /**
          * 根据图片资源获取Bitmap对象
          */
-        Drawable drawable=this.getResources().getDrawable(R.mipmap.test1);
+      /*  Drawable drawable=this.getResources().getDrawable(R.mipmap.logo);
         BitmapDrawable bitmapDrawable=(BitmapDrawable)drawable;
         Bitmap bitmap= bitmapDrawable.getBitmap();
 
-        for(int i=0;i<12;i++){
+        for(int i=0;i<1;i++){
             TradeRecord tr=new TradeRecord("海贼王 航海王","2015-02-15",bitmap,"¥ 45.3","买进");
             trList.add(tr);
         }
@@ -151,7 +162,7 @@ public class TradeRecordActivity extends Activity {
             map.put("time",trList.get(j).getTime());
             map.put("ways",trList.get(j).getWays());
            mapArrayList.add(map);
-        }
+        }*/
 
          simpleAdapter=new SimpleAdapter(this,mapArrayList,R.layout.trade_record_item,
                 new String[] { "picture", "name","price","time","ways" },
@@ -224,6 +235,7 @@ public class TradeRecordActivity extends Activity {
                                 al.add(map);
                             }
                             new Loadgoods().execute();
+
                         }
 
                         @Override
@@ -238,6 +250,7 @@ public class TradeRecordActivity extends Activity {
                 }
                 else{
                     Toast.makeText(TradeRecordActivity.this, "你还没有发布商品，赶紧去发布商品吧☺", Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                     swipeLayout.setRefreshing(false);
                 }
 
@@ -317,7 +330,7 @@ public class TradeRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
 
 
                 /**
@@ -330,7 +343,7 @@ public class TradeRecordActivity extends Activity {
                 maps.put("name", map.get("name").toString());
                 maps.put("price","¥ "+map.get("price").toString());
                 maps.put("time",map.get("time").toString());
-                maps.put("ways",map.get("tradeway").toString());
+                maps.put("ways", map.get("tradeway").toString());
                 mapArrayList.add(maps);
                 Message message=new Message();
                 message.what=DATACHANGED;

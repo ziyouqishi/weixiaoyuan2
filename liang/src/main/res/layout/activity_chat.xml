@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="与11正在聊天"/>
 
             <ImageButton
@@ -53,9 +54,53 @@
         android:layout_height="0.0dip"
         android:layout_weight="1.0"
         android:background="#eceff4" >
-        
+
+        <com.zhimei.liang.customview.chatview.XListView
+            android:id="@+id/mListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:fadingEdgeLength="0dp"
+            android:fastScrollEnabled="true"
+            android:listSelector="#00000000"
+            android:paddingBottom="10dp"
+            android:transcriptMode="normal" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_record"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:background="@drawable/chat_top_voice_bg"
+            android:padding="10dp" >
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/action_settings"
+                android:src="@mipmap/chat_icon_voice1" />
+
+            <TextView
+                android:id="@+id/tv_voice_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:layout_below="@id/iv_record"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="手指上滑,取消发送"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
 
     </FrameLayout>
+
+    <include layout="@layout/include_chat_bottom_bar" />
 
    
 

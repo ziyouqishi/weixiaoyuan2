@@ -24,5 +24,14 @@
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton" />
 
+    <style name="dot_style">
+        <item name="android:layout_width">5dip</item>
+        <item name="android:layout_height">5dip</item>
+        <item name="android:background">@drawable/drawable_point_indicator</item>
+        <item name="android:layout_marginLeft">1.5dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_marginRight">1.5dip</item>
+    </style>
+
 
 </resources>

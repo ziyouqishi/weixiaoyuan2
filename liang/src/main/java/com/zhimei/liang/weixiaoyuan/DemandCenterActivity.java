@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,8 @@ public class DemandCenterActivity extends FragmentActivity {
     private int tabLineLength;
     private int currentPage = 0;
 
+    private ImageButton back,index;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,27 @@ public class DemandCenterActivity extends FragmentActivity {
     }
 
     private void initView() {
+        back=(ImageButton)findViewById(R.id.need_back);
+        index=(ImageButton)findViewById(R.id.need_index);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new Intent(DemandCenterActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         viewPager = (ViewPager) findViewById(R.id.demand_viewpager);
         tv1 = (TextView) findViewById(R.id.text1);
         tv2 = (TextView) findViewById(R.id.text2);

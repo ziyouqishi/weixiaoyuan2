@@ -1,5 +1,7 @@
 package com.zhimei.liang.utitls;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -16,9 +18,6 @@ import cn.bmob.v3.listener.ThumbnailUrlListener;
  * 关于文件处理的类
  */
 public class FileHelper {
-
-
-
     /**
      * 根据URL获取Bitmap
      * */
@@ -55,4 +54,32 @@ public class FileHelper {
 
         }
     }
+
+    /**
+     * value表示每次所加的分数大小
+     * @param context
+     * @param value
+     */
+
+    public void storeUpScore(Context context,int value ){
+        int oldScore=getScore(context);
+        int newScore=oldScore+value;
+        SharedPreferences.Editor editor=context.getSharedPreferences("weixiaoyuan", context.MODE_PRIVATE).edit();
+        editor.putInt("score", newScore);
+        editor.commit();
+    }
+
+
+
+    /**
+     * 读取存储的分数值
+     * @return
+     */
+    public int getScore(Context context){
+        SharedPreferences pref=context.getSharedPreferences("weixiaoyuan", context.MODE_PRIVATE);
+        int score=pref.getInt("score",0);
+        return  score;
+    }
+
+
 }

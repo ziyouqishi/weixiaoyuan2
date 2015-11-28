@@ -15,29 +15,30 @@
             android:layout_centerVertical="true"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/score_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
+                android:background="@mipmap/backhome"
                 />
             <TextView
                 android:id="@+id/score_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="23dp"
+                android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="我的积分"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/score_index"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/score_back"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
+                android:background="@mipmap/back"
                 />
 
 
@@ -67,7 +68,7 @@
                 android:id="@+id/score_tv_shuzi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="积分余额"
+                android:text="当前积分"
                 android:textColor="#40E0D0"
 
                 android:textSize="23sp"/>
@@ -93,6 +94,7 @@
             android:layout_below="@+id/score_shuzi"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/exchange"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"

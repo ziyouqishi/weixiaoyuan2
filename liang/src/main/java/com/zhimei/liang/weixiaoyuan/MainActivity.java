@@ -1,5 +1,6 @@
 package com.zhimei.liang.weixiaoyuan;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhimei.liang.fragment.*;
+import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.SecondHandGoods;
 
 import java.util.ArrayList;
@@ -43,14 +45,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setSelect(0);
     }
 
-   /* @Override
-    protected void onRestart() {
-        super.onRestart();
-        gridview=(GridView)findViewById(R.id.gridview);
-        initview();
-        setSelect(0);
-    }*/
-
     void initview(){
         index=(ImageButton)findViewById(R.id.all_icon);
         supmarket=(ImageButton)findViewById(R.id.sch_icon);
@@ -78,7 +72,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         sch_marcket.setOnClickListener(this);
 
 
-
+        storeUpScore();
 
     }
 
@@ -140,7 +134,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     transaction.show(frg_index);
                 }
                index.setBackgroundResource(R.mipmap.all_press);
-                shangpin.setTextColor(0xff32CD32);
+                shangpin.setTextColor(0xff5CACEE);
                 break;
             case 1:
                 if(frg_market==null){
@@ -151,7 +145,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     transaction.show(frg_market);
                 }
                 supmarket .setBackgroundResource(R.mipmap.gouwu_press);
-                xiaoyuanchaoshi.setTextColor(0xff32CD32);
+                xiaoyuanchaoshi.setTextColor(0xff5CACEE);
                 break;
             case 2:
                 if(frg_hand==null){
@@ -162,7 +156,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     transaction.show(frg_hand);
                 }
                 secondhand.setBackgroundResource(R.mipmap.ershou_press);
-                ershoushichang.setTextColor(0xff32CD32);
+                ershoushichang.setTextColor(0xff5CACEE);
                 break;
             case 3:
                 if(frg_donation==null){
@@ -172,8 +166,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 else{
                     transaction.show(frg_donation);
                 }
-                loveing.setBackgroundResource(R.mipmap.aixin_press);
-                aixinjuanzeng.setTextColor(0xff32CD32);
+                loveing.setBackgroundResource(R.mipmap.aixin);
+                aixinjuanzeng.setTextColor(0xff5CACEE);
                 break;
             case 4:
                 if(frg_individul==null){
@@ -184,7 +178,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     transaction.show(frg_individul);
                 }
                 center.setBackgroundResource(R.mipmap.geren_press);
-                gerenzhongxin.setTextColor(0xff32CD32);
+                gerenzhongxin.setTextColor(0xff5CACEE);
                 break;
 
         }
@@ -232,6 +226,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }else if(frg_individul == null && fragment instanceof IndividulFragment){
             frg_individul = (IndividulFragment)fragment;
         }
+    }
+
+    /**
+     * 刚打开app，就建立分数的存储
+     */
+    void storeUpScore(){
+        SharedPreferences.Editor editor=getSharedPreferences("weixiaoyuan", MODE_PRIVATE).edit();
+        editor.putInt("score",new FileHelper().getScore(MainActivity.this));
+        editor.commit();
     }
 
 }

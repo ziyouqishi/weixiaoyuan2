@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.zhimei.liang.utitls.SecHandAdapter;
 import com.zhimei.liang.weixiaoyuan.Goods_release_Activity;
 import com.zhimei.liang.weixiaoyuan.Need_release_Activity;
 import com.zhimei.liang.weixiaoyuan.QueryGoodsActivity;
@@ -28,11 +29,10 @@ import java.util.HashMap;
 
 public class SecHandFragment extends Fragment {
     private View view;
-    private ImageView back;
-    private ImageView backhome;
     private GridView gv;
     private ArrayList<HashMap<String, Object>> item_list;
     private SimpleAdapter type_adapter;
+    private SecHandAdapter adapter;
     private EditText search_content;
     private ImageButton search_ensdure;
     private Button fabuxinxi,fabuxuqiu;
@@ -50,15 +50,14 @@ public class SecHandFragment extends Fragment {
 
     void initView() {
         gv = (GridView) view.findViewById(R.id.sec_gridview);
-        back = (ImageView) view.findViewById(R.id.sec_back);
-        backhome = (ImageView) view.findViewById(R.id.sec_index);
         search_content=(EditText)view.findViewById(R.id.sec_two_frame_et);
         search_ensdure=(ImageButton)view.findViewById(R.id.sec_two_deletecontent);
         fabuxinxi=(Button)view.findViewById(R.id.sec_publish);
         fabuxuqiu=(Button)view.findViewById(R.id.sec_need);
         final String category[]={"书籍","手机","校园代步","体育健身","电脑","衣服鞋帽","数码产品","其他"};
 
-        gv.setAdapter(type_adapter);
+       // gv.setAdapter(type_adapter);
+        gv.setAdapter(adapter);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -67,6 +66,7 @@ public class SecHandFragment extends Fragment {
                 intent.putExtra("queryData", category[position]);
                 intent.putExtra("way","category");
                 startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
 
@@ -89,6 +89,7 @@ public class SecHandFragment extends Fragment {
                     intent.putExtra("queryData",search_content.getText().toString());
                     intent.putExtra("way","name");
                     startActivity(intent);
+                    getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
                 }
 
             }
@@ -99,6 +100,7 @@ public class SecHandFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(view.getContext(), Goods_release_Activity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
         });
 
@@ -107,6 +109,7 @@ public class SecHandFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(view.getContext(), Need_release_Activity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
         });
 
@@ -162,6 +165,9 @@ public class SecHandFragment extends Fragment {
                 R.layout.sec_item,// 显示布局
                 new String[] { "picture", "name" },
                 new int[] { R.id.sec_iv_item, R.id.sec_tv_item });
+        adapter=new SecHandAdapter(item_list,view.getContext());
+
+
 
 
 

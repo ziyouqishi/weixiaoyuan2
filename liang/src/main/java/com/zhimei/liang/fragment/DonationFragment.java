@@ -2,8 +2,10 @@ package com.zhimei.liang.fragment;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -22,11 +24,14 @@ import android.widget.Toast;
 
 import com.zhimei.liang.customview.XCicleImageView;
 import com.zhimei.liang.utitls.DonationRecord;
+import com.zhimei.liang.utitls.FileHelper;
+import com.zhimei.liang.utitls.FormFile;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.RealPath;
 import com.zhimei.liang.utitls.SecondHandGoods;
 import com.zhimei.liang.weixiaoyuan.DonateSuccessActivity;
 import com.zhimei.liang.weixiaoyuan.R;
+import com.zhimei.liang.weixiaoyuan.ScoreActivity;
 
 import java.io.File;
 
@@ -53,6 +58,7 @@ public class DonationFragment extends Fragment {
     private String picturePath;//照片存储路径
     private ProgressDialog progressDialog;
     private BmobFile bmobFile;
+    private Uri uri_photo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,7 +83,7 @@ public class DonationFragment extends Fragment {
                /* Intent intent=new Intent(view.getContext(), DonateSuccessActivity.class);
                 startActivity(intent);*/
 
-                if(MyApplication.isSignUPSuccess()){
+                if (MyApplication.isSignUPSuccess()) {
                     if (name.equals("")) {
                         Toast.makeText(view.getContext(), "亲，请输入名称", Toast.LENGTH_SHORT).show();
                     } else if (organizationi.equals("")) {
@@ -87,8 +93,7 @@ public class DonationFragment extends Fragment {
                     } else {
                         loadFileandSignUp();
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(view.getContext(), "亲，请先登录", Toast.LENGTH_SHORT).show();
                 }
 
@@ -190,10 +195,22 @@ public class DonationFragment extends Fragment {
                         imagetest.setImageBitmap(picture);
                         imagetest.setVisibility(View.VISIBLE);
                         picturePath= RealPath.getPath(view.getContext(), uri);
-                        Log.i("jialiang", picturePath);
                         // finish();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        /**
+                         * 因为htc手机的兼容问题，所以在CROP_PHOTO中抛异常，代码无法正常运行。
+                         * 因此该uri来自上一个活动中，而并非截图后的uri
+                         */
+                        try{
+                            Bitmap bit = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri_photo));
+                            picture=bit;
+                            imagetest.setImageBitmap(picture);
+                            imagetest.setVisibility(View.VISIBLE);
+                        }
+                        catch (Exception e1){
+
+                        }
+                        picturePath=RealPath.getPath(view.getContext(),uri_photo);
                     }
                 }
                 break;
@@ -202,7 +219,7 @@ public class DonationFragment extends Fragment {
                  * 对相册中的图片进行裁剪，首先要得到被选中图片的URI
                  */
                 if (res == this.getActivity().RESULT_OK) {
-                    Uri uri_photo = data.getData();
+                   uri_photo = data.getData();
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(uri_photo, "image/*");
                     intent.putExtra("scale", true);
@@ -236,13 +253,12 @@ public class DonationFragment extends Fragment {
 
 
     void loadFileandSignUp(){
-        progressDialog= ProgressDialog.show(view.getContext(), "", "正在登录中");
+        progressDialog= ProgressDialog.show(view.getContext(), "", "正在提交数据");
         // String path=Environment.getExternalStorageDirectory()+"/xiao.jpeg";
         bmobFile=new BmobFile(new File(picturePath));
         bmobFile.uploadblock(view.getContext(), new UploadFileListener() {
             @Override
             public void onSuccess() {
-                Toast.makeText(view.getContext(), "图片上传成功" + bmobFile.getFileUrl(view.getContext()), Toast.LENGTH_SHORT).show();
                 // sign();
                 MyApplication.setTestUrl(bmobFile.getFileUrl(view.getContext()));
                 loadSecondGoods();
@@ -251,8 +267,6 @@ public class DonationFragment extends Fragment {
 
             @Override
             public void onFailure(int i, String s) {
-                Toast.makeText(view.getContext(), s, Toast.LENGTH_SHORT).show();
-                Log.i("jialiang", s);
                 /**
                  * 图片上传失败时，关掉进度条
                  */
@@ -262,13 +276,6 @@ public class DonationFragment extends Fragment {
     }
 
     void loadSecondGoods(){
-       /* SecondHandGoods secondHandGoods=new SecondHandGoods();
-        secondHandGoods.setName(goodName);
-        secondHandGoods.setPrice(goodPrice);
-        secondHandGoods.setDescription(goodDescreption);
-        secondHandGoods.setPictureFile(bmobFile);
-        secondHandGoods.setCategory(catagary);
-        secondHandGoods.setTradeWay("卖出");*/
         DonationRecord donationRecord=new DonationRecord();
         donationRecord.setName(name);
         donationRecord.setReceiveOrganization(organizationi);
@@ -278,17 +285,46 @@ public class DonationFragment extends Fragment {
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
-                Toast.makeText(view.getContext(), "商品发布成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(view.getContext(), DonateSuccessActivity.class);
+                /**
+                 * 每次的积分加15，并且存储到文件中
+                 */
+                new FileHelper().storeUpScore(view.getContext(),15);
+                Toast.makeText(view.getContext(), "商品发布成功,快去查看你的积分吧", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), ScoreActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
 
             @Override
             public void onFailure(int i, String s) {
                 progressDialog.dismiss();
-                Toast.makeText(view.getContext(), s, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    /**
+     * 捐赠成功后，修改分数
+     * 捐赠一次，积分加15
+     */
+    void storeUpScore(){
+        int oldScore=getScore();
+        int newScore=oldScore+15;
+        SharedPreferences.Editor editor=view.getContext().getSharedPreferences("weixiaoyuan", view.getContext().MODE_PRIVATE).edit();
+        editor.putInt("score", newScore);
+        editor.commit();
+    }
+
+
+    /**
+     * 读取存储的分数值
+     * @return
+     */
+
+    int  getScore(){
+        SharedPreferences pref=view.getContext().getSharedPreferences("weixiaoyuan",view.getContext().MODE_PRIVATE);
+        int score=pref.getInt("score",0);
+        return  score;
     }
 
 }

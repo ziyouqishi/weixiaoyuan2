@@ -1,4 +1,5 @@
 package com.zhimei.liang.fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -44,18 +45,15 @@ public class IndexFragment extends Fragment {
     private GridView gridview;
     private int loopNum=0;//循环计数
     private int refreshTime=0;//刷新次数的记录
-
     private ArrayList<SecondHandGoods> goods_list;
-    private Spinner mySpinner1;
-    private Spinner mySpinner2;
-    private ArrayAdapter spi_adapter_1;
-    private ArrayAdapter spi_adapter_2;
     private ArrayAdapter<String> adapter;
     private Animation animation;
     private  SimpleAdapter goods_adapter;
     private SwipeRefreshLayout swipeLayout;
     private BmobQuery<SecondHandGoods> query ;
     private final static int DATACHANGED=1;
+    private   Bitmap bitmap;
+    private ProgressDialog progressDialog;
     private ArrayList<HashMap<String, Object>> item_list;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private Handler handler=new Handler(){
@@ -80,17 +78,12 @@ public class IndexFragment extends Fragment {
     }
 
     void initView(){
+        progressDialog=new ProgressDialog(view.getContext());
+        progressDialog.setMessage("正在加载数据，请稍后");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+        judgeAndquery();
         gridview=(GridView)view.findViewById(R.id.gridview);
-        mySpinner1=(Spinner)view.findViewById(R.id.spinner1);
-        mySpinner2=(Spinner)view.findViewById(R.id.spinner2);
-        spi_adapter_1 = ArrayAdapter.createFromResource(view.getContext(), R.array.spingarr, android.R.layout.simple_spinner_item);
-        spi_adapter_2 = ArrayAdapter.createFromResource(view.getContext(), R.array.spingarr2, android.R.layout.simple_spinner_item);
-
-        spi_adapter_1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spi_adapter_2.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-
-        mySpinner1.setAdapter(spi_adapter_1);
-        mySpinner2.setAdapter(spi_adapter_2);
 
 
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
@@ -106,6 +99,8 @@ public class IndexFragment extends Fragment {
                 Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
                 if (refreshTime == 0) {
+                    item_list.clear();
+                    goods_adapter.notifyDataSetChanged();
                     judgeAndquery();
 
                 } else {
@@ -128,21 +123,22 @@ public class IndexFragment extends Fragment {
     void initreso(){
         goods_list=new ArrayList<SecondHandGoods>();
         item_list = new ArrayList<HashMap<String, Object>>();
+        bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.nullpicture);
         animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.myanim);
         /**
          * 得到商品的图片
          */
-         Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
+          Bitmap picture= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
 
         //模拟了六个商品
-        int test=R.drawable.goods;
-        SecondHandGoods good1=new SecondHandGoods(bitmap,"22.2","墙纸","2天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good2=new SecondHandGoods(bitmap,"312.2","墙纸2","5天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good3=new SecondHandGoods(bitmap,"34.2","墙纸3","6天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good4=new SecondHandGoods(bitmap,"52.2","墙纸4","1天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good5=new SecondHandGoods(bitmap,"62.2","墙纸5","3天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good6=new SecondHandGoods(bitmap,"72.2","墙纸6","4天前","这是我今年九月份才买的，只用了几天...");
-        SecondHandGoods good7=new SecondHandGoods(bitmap,"32.2","墙纸7","2天前","这是我今年九月份才买的，只用了几天...");
+       /* int test=R.drawable.goods;
+        SecondHandGoods good1=new SecondHandGoods(picture,"22.2","墙纸","2天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good2=new SecondHandGoods(picture,"312.2","墙纸2","5天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good3=new SecondHandGoods(picture,"34.2","墙纸3","6天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good4=new SecondHandGoods(picture,"52.2","墙纸4","1天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good5=new SecondHandGoods(picture,"62.2","墙纸5","3天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good6=new SecondHandGoods(picture,"72.2","墙纸6","4天前","这是我今年九月份才买的，只用了几天...");
+        SecondHandGoods good7=new SecondHandGoods(picture,"32.2","墙纸7","2天前","这是我今年九月份才买的，只用了几天...");
 
         goods_list.add(good1);
         goods_list.add(good2);
@@ -150,9 +146,9 @@ public class IndexFragment extends Fragment {
         goods_list.add(good4);
         goods_list.add(good5);
         goods_list.add(good6);
-        goods_list.add(good7);
+        goods_list.add(good7);*/
 
-        for(int i=0;i<goods_list.size();i++){
+       /* for(int i=0;i<goods_list.size();i++){
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("bitmap",goods_list.get(i).getPhoto());
             map.put("price",goods_list.get(i).getPrice());
@@ -160,7 +156,7 @@ public class IndexFragment extends Fragment {
             map.put("name",goods_list.get(i).getName());
             map.put("description",goods_list.get(i).getDescription());
             item_list.add(map);
-        }
+        }*/
 
          goods_adapter = new SimpleAdapter(view.getContext(),
                 item_list,// 数据源
@@ -204,8 +200,10 @@ public class IndexFragment extends Fragment {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         MyApplication.setHashmap(item_list.get(position));
-                        Intent intent = new Intent(view.getContext(), TradeWindowActivity.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(view.getContext(), TradeWindowActivity.class);
+                            startActivity(intent);
+                        getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
 
                     }
 
@@ -215,7 +213,12 @@ public class IndexFragment extends Fragment {
                     }
                 });
                 if(MyApplication.isSignUPSuccess()){
-                    iv.startAnimation(animation);
+                    if(item_list.get(position).get("bitmap").equals(bitmap)){
+                        Toast.makeText(view.getContext(),"图片正在加载中，请稍后",Toast.LENGTH_SHORT).show();
+                    }else{
+                        iv.startAnimation(animation);
+                    }
+
                 }
                 else{
                     Toast.makeText(view.getContext(),"亲，请登录",Toast.LENGTH_SHORT).show();
@@ -274,6 +277,7 @@ public class IndexFragment extends Fragment {
                     al.add(map);
 
                 }
+                progressDialog.dismiss();
                 new Loadgoods().execute();
 
 
@@ -321,15 +325,12 @@ public class IndexFragment extends Fragment {
                 @Override
                 public void run() {
                     for(int i=0;i<al.size();i++,count++){
-                        Bitmap bitmap=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
-                        item_list.get(count).put("bitmap",bitmap);
+                        Bitmap bitmaps=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
+                        item_list.get(count).put("bitmap",bitmaps);
                         Message message=new Message();
                         message.what=DATACHANGED;
                         handler.sendMessage(message);
-
-
                     }
-
                 }
             }).start();
 
@@ -353,7 +354,6 @@ public class IndexFragment extends Fragment {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
                // Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("url").toString());
 
 
@@ -380,6 +380,7 @@ public class IndexFragment extends Fragment {
 
         }
     }
+
 
 
 }

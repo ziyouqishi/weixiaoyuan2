@@ -15,29 +15,30 @@
             android:layout_centerVertical="true"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/log_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
+                android:background="@mipmap/backhome"
                 />
             <TextView
                 android:id="@+id/log_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="23dp"
+                android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="登录"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/log_index"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/reg_back"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
+                android:background="@mipmap/back"
                 />
 
 
@@ -87,7 +88,6 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/log_tv_ID"
             android:ems="15"
-            android:background="@android:drawable/edit_text"
             android:singleLine="true"
             />
     </RelativeLayout>
@@ -115,7 +115,6 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/log_tv_pass"
             android:ems="15"
-            android:background="@android:drawable/edit_text"
             android:singleLine="true"
             android:inputType="textPassword"
             />
@@ -137,7 +136,7 @@
             android:layout_height="wrap_content"
             android:text="登录"
             android:textSize="19sp"
-            android:background="#00FFFF"
+            android:background="#5CACEE"
             android:layout_centerHorizontal="true"
             />
 

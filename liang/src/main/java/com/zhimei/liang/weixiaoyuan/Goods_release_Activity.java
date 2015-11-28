@@ -52,6 +52,7 @@ public class Goods_release_Activity extends Activity {
     private String picturePath;
     private ProgressDialog progressDialog;
     private String goodDescreption;
+    private Uri uri_photo;
 
 
 
@@ -218,6 +219,7 @@ public class Goods_release_Activity extends Activity {
                      */
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(imageUri, "image/*");
+                    uri_photo=imageUri;
                     intent.putExtra("scale", true);
                     intent.putExtra("MediaStore.EXTRA_OUTPUT", imageUri);
                     intent.putExtra("outputX", 300);
@@ -240,7 +242,19 @@ public class Goods_release_Activity extends Activity {
                         picturePath= RealPath.getPath(Goods_release_Activity.this, uri);
                         Log.i("jialiang",picturePath);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        /**
+                         * 因为htc手机的兼容问题，所以在CROP_PHOTO中抛异常，代码无法正常运行。
+                         * 因此该uri来自上一个活动中，而并非截图后的uri
+                         */
+                        try{
+                            Bitmap bit = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri_photo));
+                            picture=bit;
+                            getPhoto.setImageBitmap(bit);
+                        }
+                        catch (Exception e1){
+
+                        }
+                        picturePath=RealPath.getPath(Goods_release_Activity.this,uri_photo);
                     }
                 }
                 break;
@@ -249,7 +263,7 @@ public class Goods_release_Activity extends Activity {
                  * 对相册中的图片进行裁剪，首先要得到被选中图片的URI
                  */
                 if (res == RESULT_OK) {
-                    Uri uri_photo = data.getData();
+                    uri_photo = data.getData();
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(uri_photo, "image/*");
                     intent.putExtra("scale", true);
@@ -282,13 +296,12 @@ public class Goods_release_Activity extends Activity {
     }
 
     void loadFileandSignUp(){
-        progressDialog= ProgressDialog.show(Goods_release_Activity.this, "", "正在登录中");
+        progressDialog= ProgressDialog.show(Goods_release_Activity.this, "", "正在连接服务器中");
         // String path=Environment.getExternalStorageDirectory()+"/xiao.jpeg";
         bmobFile=new BmobFile(new File(picturePath));
         bmobFile.uploadblock(Goods_release_Activity.this, new UploadFileListener() {
             @Override
             public void onSuccess() {
-                Toast.makeText(Goods_release_Activity.this, "图片上传成功"+bmobFile.getFileUrl(Goods_release_Activity.this), Toast.LENGTH_SHORT).show();
                 // sign();
                 MyApplication.setTestUrl(bmobFile.getFileUrl(Goods_release_Activity.this));
                 loadSecondGoods();
@@ -320,6 +333,7 @@ public class Goods_release_Activity extends Activity {
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
+                new FileHelper().storeUpScore(Goods_release_Activity.this, 3);
                 Toast.makeText(Goods_release_Activity.this, "商品发布成功", Toast.LENGTH_SHORT).show();
             }
 

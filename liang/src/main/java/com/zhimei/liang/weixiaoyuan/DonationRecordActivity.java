@@ -2,6 +2,7 @@ package com.zhimei.liang.weixiaoyuan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,6 +14,7 @@ import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -48,12 +50,15 @@ public class DonationRecordActivity extends Activity {
     private SwipeRefreshLayout swipeLayout;
     private final static int DATACHANGED=1;
     private  SimpleAdapter simpleAdapter;
+    private ImageButton back,index;
+    private ProgressDialog progressDialog;
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch(msg.what){
                 case DATACHANGED:
+                    progressDialog.dismiss();
                     simpleAdapter.notifyDataSetChanged();
             }
         }
@@ -67,6 +72,32 @@ public class DonationRecordActivity extends Activity {
     }
 
     void initViews(){
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("正在加载数据，请稍后");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+        judgeAndquery();
+        back=(ImageButton)findViewById(R.id.donation_record_back);
+        index=(ImageButton)findViewById(R.id.donation_record_index);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new Intent(DonationRecordActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         trList=new ArrayList<>();
         mapArrayList=new ArrayList<>();
         name=(TextView)findViewById(R.id.donation_good_name);
@@ -87,6 +118,8 @@ public class DonationRecordActivity extends Activity {
 
                 swipeLayout.setRefreshing(true);
                 if(refreshTime==0) {
+                    mapArrayList.clear();
+                    simpleAdapter.notifyDataSetChanged();
                     judgeAndquery();
                     refreshTime=refreshTime+1;
                 }
@@ -107,20 +140,20 @@ public class DonationRecordActivity extends Activity {
         BitmapDrawable bitmapDrawable=(BitmapDrawable)drawable;
         Bitmap bitmap= bitmapDrawable.getBitmap();
 
-        for(int i=0;i<12;i++){
+      /*  for(int i=0;i<12;i++){
            DonationRecord dr=new DonationRecord("迪斯尼公主精选集","支教团队","2015.5.10",bitmap);
             trList.add(dr);
-        }
+        }*/
 
 
-        for(int j=0;j<trList.size();j++){
+       /* for(int j=0;j<trList.size();j++){
             HashMap<String,Object> map=new HashMap<>();
             map.put("picture",trList.get(j).getPicture());
             map.put("name",trList.get(j).getName());
             map.put("organization",trList.get(j).getReceiveOrganization());
             map.put("time",trList.get(j).getTime());
             mapArrayList.add(map);
-        }
+        }*/
 
 
          simpleAdapter=new SimpleAdapter(this,mapArrayList,R.layout.donation_record_item,
@@ -167,6 +200,7 @@ public class DonationRecordActivity extends Activity {
                     querydata();
                 }
                 else{
+                    progressDialog.dismiss();
                     Toast.makeText(DonationRecordActivity.this, "你还没有捐赠物品，赶紧去捐赠物品吧☺", Toast.LENGTH_LONG).show();
                     swipeLayout.setRefreshing(false);
                 }
@@ -297,7 +331,7 @@ public class DonationRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.test1);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
 
 
                 /**

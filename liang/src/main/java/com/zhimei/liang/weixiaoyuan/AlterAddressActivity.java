@@ -2,6 +2,7 @@ package com.zhimei.liang.weixiaoyuan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,7 @@ import cn.bmob.v3.listener.UpdateListener;
 public class AlterAddressActivity extends Activity {
     private ImageButton ensure;
     private RelativeLayout layout;
-    private ImageButton monify;
+    private ImageButton monify, back,index;
     private EditText it_address;
     private String objectid;//得到对象的ＩＤ
     private String newAddress;
@@ -49,6 +50,26 @@ public class AlterAddressActivity extends Activity {
     }
 
     void initViews(){
+        back=(ImageButton)findViewById(R.id.alter_back);
+        index=(ImageButton)findViewById(R.id.alter_index);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new Intent(AlterAddressActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         it_address=(EditText)findViewById(R.id.new_address);
         ensure=(ImageButton)findViewById(R.id.xiugaidizhi);
         layout=(RelativeLayout)findViewById(R.id.alter_three);

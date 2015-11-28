@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/goods_image"
         android:text="数字信号"
+        android:maxEms="6"
+        android:singleLine="true"
         android:textSize="15sp"/>
     <TextView
         android:id="@+id/goods_price"
@@ -40,7 +42,7 @@
         android:id="@+id/hengxian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/goods_price"
+        android:layout_below="@+id/goods_name"
         android:layout_alignLeft="@+id/goods_image"
         android:layout_alignRight="@+id/goods_image"
         android:src="@drawable/henxian"/>
@@ -53,6 +55,7 @@
         android:layout_alignLeft="@+id/hengxian"
         android:layout_alignRight="@+id/hengxian"
         android:textSize="13sp"
+        android:lines="2"
         android:text="这是我今年九月份才买的，只用了几天..."/>
 
     <TextView

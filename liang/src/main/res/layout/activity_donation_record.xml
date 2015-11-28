@@ -15,29 +15,30 @@
             android:layout_centerVertical="true"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/donation_record_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
+                android:background="@mipmap/backhome"
                 />
             <TextView
                 android:id="@+id/donation_record_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="23dp"
+                android:textSize="18dp"
+                android:textColor="#FFFFFF"
                 android:text="捐赠信息"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/donation_record_index"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/donation_record_back"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
+                android:background="@mipmap/back"
                 />
 
 

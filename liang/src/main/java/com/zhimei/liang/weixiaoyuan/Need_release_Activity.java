@@ -2,6 +2,7 @@ package com.zhimei.liang.weixiaoyuan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.zhimei.liang.utitls.DemandObject;
+import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 
 import cn.bmob.v3.listener.SaveListener;
@@ -24,7 +26,7 @@ public class Need_release_Activity extends Activity {
     private String catagary;//商品的种类
     private String name;
     private String descreption;
-    private ImageButton ensure;
+    private ImageButton ensure,back,index;
     private ProgressDialog progressDialog;
 
 
@@ -37,6 +39,26 @@ public class Need_release_Activity extends Activity {
     }
 
     void inintViews(){
+
+        back=(ImageButton)findViewById(R.id.need_back);
+        index=(ImageButton)findViewById(R.id.need_index);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new Intent(Need_release_Activity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         et_name=(EditText)findViewById(R.id.rel_two_getname);
         et_description=(EditText)findViewById(R.id.need_two_getdetail);
         type=(Spinner)findViewById(R.id.rel_spinner1);
@@ -89,6 +111,7 @@ public class Need_release_Activity extends Activity {
             public void onSuccess() {
                 progressDialog.dismiss();
                 Toast.makeText(Need_release_Activity.this, "需求发布成功", Toast.LENGTH_SHORT).show();
+                new FileHelper().storeUpScore(Need_release_Activity.this, 3);
             }
 
             @Override

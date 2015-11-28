@@ -5,42 +5,19 @@
     <RelativeLayout
         android:id="@+id/per_one"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#5CACEE">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#5CACEE"
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            >
+            android:text="个人中心"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"/>
 
-            <ImageView
-                android:id="@+id/per_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
-                />
-            <TextView
-                android:id="@+id/per_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textSize="18dp"
-                android:text="个人中心"/>
-
-            <ImageView
-                android:id="@+id/per_index"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignTop="@+id/reg_back"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
-                />
-
-
-        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -62,7 +39,7 @@
             <RelativeLayout
                 android:id="@+id/per_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:background="@mipmap/bg"
 
                 >
@@ -76,7 +53,7 @@
                         android:id="@+id/per_iv_image"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@mipmap/test"
+                        android:src="@mipmap/logo"
                         android:layout_centerHorizontal="true"
                         />
 
@@ -84,8 +61,7 @@
                         android:id="@+id/per_tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="21dp"
-                        android:text="仗义的猴子"
+                        android:textSize="21sp"
                         android:layout_below="@+id/per_iv_image"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
@@ -131,6 +107,14 @@
                     android:layout_marginRight="10dp"
                     android:layout_centerVertical="true"
                     />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/grayline"
+                    android:layout_alignLeft="@+id/per_iv_score"
+                    android:layout_alignRight="@+id/per_more_score"
+                    />
 
 
             </RelativeLayout>
@@ -141,7 +125,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/per_score"
-                android:layout_marginTop="10dp"
                 android:background="#FFFFFF">
                 <ImageView
                     android:id="@+id/per_iv_tradedetail"
@@ -180,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/per_tradedetail"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="#FFFFFF">
                 <ImageView
                     android:id="@+id/per_iv_donatedetail"
@@ -211,6 +194,15 @@
                     android:layout_centerVertical="true"
                     />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/grayline"
+                    android:layout_alignLeft="@+id/per_iv_donatedetail"
+                    android:layout_alignRight="@+id/per_more_donatedetail"
+                    />
+
 
             </RelativeLayout>
 
@@ -220,7 +212,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/per_donatedetail"
-                android:layout_marginTop="10dp"
                 android:background="#FFFFFF">
                 <ImageView
                     android:id="@+id/per_iv_modifyaddress"
@@ -260,7 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/per_modifyaddress"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="#FFFFFF">
                 <ImageView
                     android:id="@+id/per_iv_demand"
@@ -311,8 +302,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="登录"
-                    android:textSize="23sp"
-                    android:background="#BFEFFF"
+                    android:textSize="20sp"
+                    android:background="#5CACEE"
                     />
 
             </RelativeLayout>

@@ -2,62 +2,41 @@
      android:layout_width="match_parent"
     android:layout_height="match_parent"
    >
-    <RelativeLayout
-        android:id="@+id/don_one"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#5CACEE">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            >
+     <RelativeLayout
+         android:id="@+id/don_one"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:background="#5CACEE"
+         >
 
-            <ImageView
-                android:id="@+id/don_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
-                />
-            <TextView
-                android:id="@+id/don_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textSize="18dp"
-                android:text="我要捐赠"/>
-
-            <ImageView
-                android:id="@+id/don_index"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignTop="@+id/reg_back"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
-                />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="我要捐赠"
+             android:layout_centerHorizontal="true"
+             android:textColor="#FFFFFF"
+             android:textSize="20sp"/>
 
 
-        </RelativeLayout>
-    </RelativeLayout>
-
+     </RelativeLayout>
+<!--
     <RelativeLayout
         android:id="@+id/don_four"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_below="@+id/don_one"
-        android:background="@mipmap/donate_2">
+        android:background="@mipmap/donate_3">
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/don_four"
+        android:layout_below="@+id/don_one"
         >
 
         <RelativeLayout
@@ -66,7 +45,15 @@
             android:layout_height="wrap_content"
             >
 
+            <RelativeLayout
+                android:id="@+id/don_four"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@mipmap/donate_3">
+            </RelativeLayout>
+
             <EditText
+
                 android:id="@+id/don_et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,6 +61,7 @@
                 android:hint="请添加捐赠物名称"
                 android:layout_marginTop="12dp"
                 android:layout_margin="8dp"
+                android:layout_below="@+id/don_four"
                 />
 
 
@@ -137,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/add_photo"
                 android:layout_margin="15dp"
-                android:background="#4EEE94"
+                android:background="#5CACEE"
                 android:text="捐赠"/>
 
 

@@ -5,10 +5,6 @@ import android.graphics.Bitmap;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
-/**
- * 购物清单
- * Created by 张佳亮 on 2015/11/17.
- */
 public class ShoppingTable extends BmobObject {
     private String goodName;
     private String goodPrice;

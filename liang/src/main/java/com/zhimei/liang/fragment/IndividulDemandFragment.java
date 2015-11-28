@@ -47,6 +47,7 @@ public class IndividulDemandFragment extends Fragment {
     private BmobQuery<User>  queryUser;
     private String  headPictureUrl;
     private final static int DATACHANGED=1;
+    private ProgressDialog progressDialog;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private Handler handler=new Handler(){
         @Override
@@ -54,6 +55,7 @@ public class IndividulDemandFragment extends Fragment {
             super.handleMessage(msg);
             switch(msg.what){
                 case DATACHANGED:
+                    progressDialog.dismiss();
                     simpleAdapter.notifyDataSetChanged();
             }
         }
@@ -67,6 +69,12 @@ public class IndividulDemandFragment extends Fragment {
         return view;
     }
     void initViews(){
+        progressDialog=new ProgressDialog(view.getContext());
+        progressDialog.setMessage("正在加载数据，请稍后");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+        judgeAndquery();
+
         listView=(ListView)view.findViewById(R.id.demand_listview);
         swipeLayout=(SwipeRefreshLayout)view.findViewById(R.id.swipe_container);
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
@@ -82,6 +90,8 @@ public class IndividulDemandFragment extends Fragment {
                 Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
                 if (refreshTime == 0) {
+                    arrayList_map.clear();
+                    simpleAdapter.notifyDataSetChanged();
                     judgeAndquery();
 
                 } else {
@@ -110,7 +120,7 @@ public class IndividulDemandFragment extends Fragment {
         arrayList_map=new ArrayList<>();
 
 
-        Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
+       /* Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
         DemandObject demandObject=new DemandObject("自行车",bitmap,"这辆自行车新买的不久，我很少使用，质优价廉，非诚勿扰","2014-5-14");
         DemandObject demandObject2=new DemandObject("电脑",bitmap,"这台电脑新买的不久，我很少使用，质优价廉，非诚勿扰","2012-5-14");
         al_demandobject.add(demandObject);
@@ -123,7 +133,7 @@ public class IndividulDemandFragment extends Fragment {
             map.put("descreption",demand.getDescreption());
             map.put("time",demand.getTime());
             arrayList_map.add(map);
-        }
+        }*/
 
         simpleAdapter = new SimpleAdapter(view.getContext(),
                 arrayList_map,
@@ -165,6 +175,7 @@ public class IndividulDemandFragment extends Fragment {
                 if (i > 0) {
                     querydata();
                 } else {
+                    progressDialog.dismiss();
                     Toast.makeText(view.getContext(), "你还没有捐赠物品，赶紧去捐赠物品吧☺", Toast.LENGTH_LONG).show();
                     swipeLayout.setRefreshing(false);
                 }
@@ -282,7 +293,7 @@ public class IndividulDemandFragment extends Fragment {
                 /**
                  * 后面要换成真正的头像
                  */
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
 
                 /**
                  * 每次得到数据，边将数据加载进simpleAdapter的数据院中

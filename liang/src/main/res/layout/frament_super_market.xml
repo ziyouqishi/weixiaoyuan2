@@ -5,46 +5,23 @@
 
     tools:context="com.zhimei.weixiaoyuan.SuperMarketActivity">
 
-
     <RelativeLayout
         android:id="@+id/sup_one"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#5CACEE">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#5CACEE"
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            >
-
-            <ImageView
-                android:id="@+id/sup_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
-                />
-            <TextView
-                android:id="@+id/sup_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textSize="18dp"
-                android:text="校园超市"/>
-
-            <ImageView
-                android:id="@+id/sup_index"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignTop="@+id/reg_back"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
-                />
+            android:text="校园超市"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"/>
 
 
-        </RelativeLayout>
     </RelativeLayout>
 
 
@@ -60,7 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center_vertical"
-            android:background="#cccccc"
             >
 
             <LinearLayout
@@ -83,12 +59,39 @@
                 android:layout_weight="1"
                 android:gravity="center" >
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/shuxian"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
                 <TextView
                     android:id="@+id/tv2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="生活用品"
                     android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/shuxian"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -104,6 +107,8 @@
                     android:text="零食饮料 "
                     android:textColor="@android:color/black"/>
             </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +117,7 @@
 
             <ImageView
                 android:id="@+id/tabline"
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:background="@mipmap/line" />
         </LinearLayout>
@@ -126,7 +131,6 @@
         android:layout_below="@id/sup_two"
 
         >
-
 
     </android.support.v4.view.ViewPager>
 

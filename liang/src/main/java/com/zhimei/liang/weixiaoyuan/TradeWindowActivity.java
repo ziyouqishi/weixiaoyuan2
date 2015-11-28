@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.bmob.pay.tool.BmobPay;
 import com.bmob.pay.tool.PayListener;
 import com.zhimei.liang.customview.RoundImageView;
+import com.zhimei.liang.fragment.IndexFragment;
 import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.SecondHandGoods;
@@ -63,6 +64,27 @@ public class TradeWindowActivity extends Activity {
     }
 
     void initViews(){
+        back=(ImageButton)findViewById(R.id.trade_window_succ_back);
+        index=(ImageButton)findViewById(R.id.trade_window_succ_index);
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent=new Intent(TradeWindowActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         hashMap= MyApplication.getHashmap();
         et_address=(TextView)findViewById(R.id.tv_address);
         et_publishManName=(TextView)findViewById(R.id.publishman_name);
@@ -74,7 +96,7 @@ public class TradeWindowActivity extends Activity {
         back=(ImageButton)findViewById(R.id.trade_window_succ_back);
         duanxin=(RelativeLayout)findViewById(R.id.all);
         phone=(RelativeLayout)findViewById(R.id.per_center);
-        chat=(RelativeLayout)findViewById(R.id.trade_windowation);
+       // chat=(RelativeLayout)findViewById(R.id.trade_windowation);
         zhifubao=(RelativeLayout)findViewById(R.id.sec_market);
         goodPicture=(ImageView)findViewById(R.id.trade_goods_picture);
         publishManPicture=(RoundImageView)findViewById(R.id.publishman_touxiang);
@@ -140,12 +162,14 @@ public class TradeWindowActivity extends Activity {
             }
         });
 
-        chat.setOnClickListener(new View.OnClickListener() {
+       /* chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(TradeWindowActivity.this,ChatActivity.class);
+                startActivity(intent);
 
             }
-        });
+        });*/
 
         /**
          * 支付宝支付，支付宝支付成功后，要删除数据
@@ -193,6 +217,7 @@ public class TradeWindowActivity extends Activity {
          * 查询用户信息
          */
         getPublishManInformation();
+
     }
 
     /**
@@ -200,7 +225,7 @@ public class TradeWindowActivity extends Activity {
      */
     void getPublishManInformation(){
         String publishMan;
-        if(hashMap.get("publishMan").toString().equals("")){
+        if(hashMap.get("publishMan")==null){
             publishMan="11";
         }
         else{
@@ -291,7 +316,7 @@ public class TradeWindowActivity extends Activity {
                  * 删除数据
                  * 将购买的信息表传至服务器
                  */
-               // deleteData(list.get(0).getObjectId());
+                deleteData(list.get(0).getObjectId());
                 loadShoppingTable((ArrayList) list);
             }
 
@@ -325,7 +350,7 @@ public class TradeWindowActivity extends Activity {
     }
 
     void pay(){
-        new BmobPay(TradeWindowActivity.this).pay(0.02, hashMap.get("name").toString(), new PayListener() {
+        new BmobPay(TradeWindowActivity.this).pay(Float.parseFloat(hashMap.get("price").toString().substring(2)), hashMap.get("name").toString(), new PayListener() {
             @Override
             public void orderId(String s) {
                 Log.i("liang", s);
@@ -335,13 +360,14 @@ public class TradeWindowActivity extends Activity {
             @Override
             public void succeed() {
                 queryDataThenDelete();
+                new FileHelper().storeUpScore(TradeWindowActivity.this, 3);
                 Toast.makeText(TradeWindowActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+
 
             }
 
             @Override
             public void fail(int i, String s) {
-                Toast.makeText(TradeWindowActivity.this, s, Toast.LENGTH_SHORT).show();
 
             }
 
