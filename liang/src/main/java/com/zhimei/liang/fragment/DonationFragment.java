@@ -288,11 +288,11 @@ public class DonationFragment extends Fragment {
                 /**
                  * 每次的积分加15，并且存储到文件中
                  */
-                new FileHelper().storeUpScore(view.getContext(),15);
+                new FileHelper().storeUpScore(view.getContext(), 15);
                 Toast.makeText(view.getContext(), "商品发布成功,快去查看你的积分吧", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), ScoreActivity.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
 
             @Override
@@ -322,9 +322,21 @@ public class DonationFragment extends Fragment {
      */
 
     int  getScore(){
-        SharedPreferences pref=view.getContext().getSharedPreferences("weixiaoyuan",view.getContext().MODE_PRIVATE);
+        SharedPreferences pref=view.getContext().getSharedPreferences("weixiaoyuan", view.getContext().MODE_PRIVATE);
         int score=pref.getInt("score",0);
         return  score;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(picture != null && !picture.isRecycled()){
+            // 回收并且置为null
+            picture.recycle();
+            picture = null;
+        }
+
+        System.gc();
     }
 
 }

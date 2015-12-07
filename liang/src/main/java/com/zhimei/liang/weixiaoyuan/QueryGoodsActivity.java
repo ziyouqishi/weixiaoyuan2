@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -39,8 +40,11 @@ public class QueryGoodsActivity extends Activity {
     private final static int DATACHANGED=1;
     private int refreshTime=0;//刷新次数的记录
     private String queryData;
+    private ImageButton back,index;
     private ProgressDialog progressDialog;
+    private boolean isRefreshFlag=false;
     private String way;
+    private  Bitmap bitmap;
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -61,9 +65,11 @@ public class QueryGoodsActivity extends Activity {
     }
 
     void initViews(){
+        back=(ImageButton)findViewById(R.id.query_back);
+        index=(ImageButton)findViewById(R.id.query_index);
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("正在加载数据，请稍后");
-        progressDialog.setCancelable(true);
+        progressDialog.setCancelable(false);
         progressDialog.show();
         swipeLayout=(SwipeRefreshLayout)findViewById(R.id.query_swipe_container);
         gridview=(GridView)findViewById(R.id.query_gridview);
@@ -72,6 +78,25 @@ public class QueryGoodsActivity extends Activity {
         way=intent.getStringExtra("way");
         mapArrayList=new ArrayList<>();
         al=new ArrayList<>();
+        bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.nullpicture);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
+
+        index.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(QueryGoodsActivity.this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
 
         goods_adapter = new SimpleAdapter(QueryGoodsActivity.this,
                 mapArrayList,
@@ -99,9 +124,15 @@ public class QueryGoodsActivity extends Activity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MyApplication.setHashmap(mapArrayList.get(position));
-                Intent intent = new Intent(QueryGoodsActivity.this, TradeWindowActivity.class);
-                startActivity(intent);
+                if(mapArrayList.get(position).get("bitmap")!=null&&mapArrayList.get(position).get("bitmap").equals(bitmap)){
+                    Toast.makeText(view.getContext(),"图片正在加载中，请稍后",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    MyApplication.setHashmap(mapArrayList.get(position));
+                    Intent intent = new Intent(QueryGoodsActivity.this, TradeWindowActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -113,7 +144,7 @@ public class QueryGoodsActivity extends Activity {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeLayout.setRefreshing(true);
+               /* swipeLayout.setRefreshing(true);
                 if (refreshTime == 0) {
                     mapArrayList.clear();
                     goods_adapter.notifyDataSetChanged();
@@ -129,7 +160,27 @@ public class QueryGoodsActivity extends Activity {
                     }, 2000);
                     Toast.makeText(QueryGoodsActivity.this, "当前已经是最新数据", Toast.LENGTH_SHORT).show();
                 }
-                refreshTime = refreshTime + 1;
+                refreshTime = refreshTime + 1;*/
+
+                swipeLayout.setRefreshing(true);
+                if(isRefreshFlag){
+                    isRefreshFlag=false;
+                    mapArrayList.clear();
+                    goods_adapter.notifyDataSetChanged();
+
+                    queryData(queryData);
+
+                }
+                else{
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            swipeLayout.setRefreshing(false);
+                            //进行数据更新
+                        }
+                    }, 1200);
+                    Toast.makeText(QueryGoodsActivity.this, "正在加载数据，请稍后", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -244,6 +295,7 @@ public class QueryGoodsActivity extends Activity {
                             message.what=DATACHANGED;
                             handler.sendMessage(message);
                         }
+                        isRefreshFlag=true;
                     }
                 }).start();
 
@@ -266,7 +318,7 @@ public class QueryGoodsActivity extends Activity {
         @Override
         protected Boolean doInBackground(Void... params) {
             for(HashMap map:al){
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.nullpicture);
+
                 /**4
                  * 每次得到数据，边将数据加载进simpleAdapter的数据院中
                  * 并用handler通知ListView数据更新
@@ -289,6 +341,17 @@ public class QueryGoodsActivity extends Activity {
             return true;
 
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(bitmap != null && !bitmap.isRecycled()){
+            // 回收并且置为null
+            bitmap.recycle();
+            bitmap = null;
+        }
+        System.gc();
     }
 
 }

@@ -4,11 +4,10 @@
     android:background="#FFFFFF"
     android:layout_height="wrap_content">
 
-    <com.zhimei.liang.customview.RoundImageView
+    <ImageView
         android:id="@+id/trade_good_picture"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/test1"
         />
 
     <RelativeLayout

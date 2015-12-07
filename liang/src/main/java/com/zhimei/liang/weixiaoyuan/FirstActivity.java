@@ -13,7 +13,6 @@ public class FirstActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         isFirstUse();
-
     }
 
     boolean isFirstUse(){

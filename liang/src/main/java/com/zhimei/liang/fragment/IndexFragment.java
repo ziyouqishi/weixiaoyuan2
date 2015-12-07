@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.TradeRecord;
+import com.zhimei.liang.weixiaoyuan.LoginActivity;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import com.zhimei.liang.utitls.SecondHandGoods;
@@ -44,7 +45,6 @@ public class IndexFragment extends Fragment {
     private View view;
     private GridView gridview;
     private int loopNum=0;//循环计数
-    private int refreshTime=0;//刷新次数的记录
     private ArrayList<SecondHandGoods> goods_list;
     private ArrayAdapter<String> adapter;
     private Animation animation;
@@ -53,6 +53,7 @@ public class IndexFragment extends Fragment {
     private BmobQuery<SecondHandGoods> query ;
     private final static int DATACHANGED=1;
     private   Bitmap bitmap;
+    private boolean isRefreshFlag=false;
     private ProgressDialog progressDialog;
     private ArrayList<HashMap<String, Object>> item_list;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
@@ -93,14 +94,11 @@ public class IndexFragment extends Fragment {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                /**
-                 * j用于判断当前界面是第几次刷新
-                 */
-                Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
-                if (refreshTime == 0) {
+                if (isRefreshFlag) {
                     item_list.clear();
                     goods_adapter.notifyDataSetChanged();
+                    isRefreshFlag = false;
                     judgeAndquery();
 
                 } else {
@@ -109,10 +107,10 @@ public class IndexFragment extends Fragment {
                             swipeLayout.setRefreshing(false);
                             //进行数据更新
                         }
-                    }, 2000);
-                    Toast.makeText(view.getContext(), "当前已经是最新数据", Toast.LENGTH_SHORT).show();
+                    }, 1500);
+                    Toast.makeText(view.getContext(), "正在加载数据，请稍后", Toast.LENGTH_SHORT).show();
+
                 }
-                refreshTime = refreshTime + 1;
 
             }
         });
@@ -128,7 +126,7 @@ public class IndexFragment extends Fragment {
         /**
          * 得到商品的图片
          */
-          Bitmap picture= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
+        //  Bitmap picture= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
 
         //模拟了六个商品
        /* int test=R.drawable.goods;
@@ -222,6 +220,10 @@ public class IndexFragment extends Fragment {
                 }
                 else{
                     Toast.makeText(view.getContext(),"亲，请登录",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), LoginActivity.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
                 }
 
 
@@ -241,10 +243,9 @@ public class IndexFragment extends Fragment {
         query.count(view.getContext(), SecondHandGoods.class, new CountListener() {
             @Override
             public void onSuccess(int i) {
-                if(i>0){
+                if (i > 0) {
                     querydata();
-                }
-                else{
+                } else {
                     Toast.makeText(view.getContext(), "当前还没有任何商品哦，赶紧去发布商品吧:-D", Toast.LENGTH_LONG).show();
                     swipeLayout.setRefreshing(false);
                 }
@@ -320,17 +321,19 @@ public class IndexFragment extends Fragment {
                 /**
                  * 求出item_list从哪个位置上开始是新加载的数据
                  */
-                int count=item_list.size()-al.size();
+              //  int count=item_list.size()-al.size();
+
 
                 @Override
                 public void run() {
-                    for(int i=0;i<al.size();i++,count++){
-                        Bitmap bitmaps=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
-                        item_list.get(count).put("bitmap",bitmaps);
+                    for(int i=0;i<item_list.size();i++){
+                     Bitmap bitmaps=new FileHelper().getHttpBitmap(al.get(i).get("url").toString());
+                        item_list.get(i).put("bitmap", bitmaps);
                         Message message=new Message();
                         message.what=DATACHANGED;
                         handler.sendMessage(message);
                     }
+                    isRefreshFlag=true;
                 }
             }).start();
 
@@ -352,10 +355,6 @@ public class IndexFragment extends Fragment {
         @Override
         protected Boolean doInBackground(Void... params) {
             for(HashMap map:al){
-              /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
-                        + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-               // Bitmap bitmap=new FileHelper().getHttpBitmap(map.get("url").toString());
-
 
                 /**
                  * 每次得到数据，边将数据加载进simpleAdapter的数据院中
@@ -374,13 +373,17 @@ public class IndexFragment extends Fragment {
                 message.what=DATACHANGED;
                 handler.sendMessage(message);
 
-
             }
             return true;
 
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+       new FileHelper().recycle(bitmap);
+    }
 
 
 }

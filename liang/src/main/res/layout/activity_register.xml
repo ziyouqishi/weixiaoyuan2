@@ -68,7 +68,7 @@
                 android:id="@+id/register_ib_photo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@mipmap/test"
+                android:src="@mipmap/logo4"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 />

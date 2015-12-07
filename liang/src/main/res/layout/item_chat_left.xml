@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f0f0f0"
+    android:paddingRight="80dip"
+    android:paddingLeft="8dip"
+    android:paddingBottom="10dip"
+    android:paddingTop="10dip">
+
+    <TextView
+        android:id="@+id/get_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14:45"
+        android:textSize="13sp"
+        android:layout_centerHorizontal="true"
+
+        />
+
+    <ImageView
+        android:id="@+id/chatlist_image_other"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_marginRight="5dip"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/get_time"
+        android:layout_marginTop="10dp"
+       />
+    <TextView
+        android:id="@+id/chatlist_text_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chatlist_image_other"
+        android:layout_alignTop="@id/chatlist_image_other"
+        android:text="hewdfb"
+        android:background="@drawable/chat_left"
+        android:paddingTop="20dp"
+        />
+
+
+
+
+</RelativeLayout>

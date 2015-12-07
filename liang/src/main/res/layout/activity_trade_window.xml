@@ -146,7 +146,7 @@
                     android:textSize="12sp"/>
             </RelativeLayout>
 
-<!--
+\
             <RelativeLayout
                 android:id="@+id/trade_windowation"
                 android:layout_width="0dp"
@@ -155,13 +155,13 @@
                 android:layout_toRightOf="@+id/sec_market"
                 >
                 <ImageButton
-                    android:id="@+id/trade_window_icon"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@mipmap/chant"
-                    android:clickable="false"
-                    />
+                android:id="@+id/trade_window_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/chant"
+                android:clickable="false"
+                />
                 <TextView
                     android:id="@+id/aixinjuanzneg"
                     android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
                     android:text="聊一聊"
                     android:textColor="#5CACEE"
                     android:textSize="12sp"/>
-            </RelativeLayout>-->
+            </RelativeLayout>
 
 
 
@@ -198,7 +198,7 @@
                     android:layout_width="350dp"
                     android:layout_height="466dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/goods"/>
+                   />
 
             </RelativeLayout>
 
@@ -220,25 +220,20 @@
                     android:background="#FFFFFF"
                     android:layout_height="wrap_content">
 
-                    <com.zhimei.liang.customview.RoundImageView
+                    <ImageView
                         android:id="@+id/publishman_touxiang"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/goods"/>
+                       />
 
-                    <RelativeLayout
-                        android:id="@+id/trade_goods_two"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/publishman_touxiang"
-                        android:layout_alignTop="@+id/publishman_touxiang"
-                        android:layout_alignBottom="@+id/publishman_touxiang">
 
                         <TextView
                             android:id="@+id/publishman_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="爱尚乌托邦"
+                            android:layout_toRightOf="@+id/publishman_touxiang"
+                            android:layout_alignTop="@+id/publishman_touxiang"
                             android:textSize="15sp"
                             android:textColor="#000000"/>
 
@@ -249,11 +244,11 @@
                             android:text="泊美沁液"
                             android:textSize="20sp"
                             android:textColor="#EE3B3B"
-                            android:layout_alignParentBottom="true"
-                           android:layout_marginBottom="3dp"
+                            android:layout_toRightOf="@+id/publishman_touxiang"
+                            android:layout_alignBottom="@+id/publishman_touxiang"
                             />
 
-                    </RelativeLayout>
+                  <!--  </RelativeLayout>-->
 
                     <TextView
                         android:id="@+id/goods_price"
@@ -268,6 +263,8 @@
 
 
                 </RelativeLayout>
+
+
                 <ImageView
                     android:id="@+id/fengexian"
                     android:layout_width="match_parent"
@@ -342,9 +339,5 @@
 
 
     </ScrollView>
-
-
-
-
 
 </RelativeLayout>

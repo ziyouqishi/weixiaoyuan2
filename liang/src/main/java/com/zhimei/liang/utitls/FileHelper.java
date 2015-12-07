@@ -26,6 +26,10 @@ public class FileHelper {
         Bitmap bitmap=null;
         URL myUrl;
 
+        /**
+         * 如果在try里面加载图片发生异常，则在catch里面继续进行加载
+         */
+
         try {
             myUrl=new URL(url);
             HttpURLConnection conn=(HttpURLConnection)myUrl.openConnection();
@@ -40,19 +44,27 @@ public class FileHelper {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        catch(OutOfMemoryError error){
+            try {
+                myUrl=new URL(url);
+                HttpURLConnection conn=(HttpURLConnection)myUrl.openConnection();
+                conn.setConnectTimeout(5000);
+                conn.connect();
+                InputStream is=conn.getInputStream();
+                bitmap= BitmapFactory.decodeStream(is);
+                //把bitmap转成圆形
+                Thread.sleep(5000);
+                is.close();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            error.printStackTrace();
+
+        }
+
         //返回圆形bitmap
         return bitmap;
-    }
-    class Thumbnail implements ThumbnailUrlListener {
-        @Override
-        public void onSuccess(String s) {
-
-        }
-
-        @Override
-        public void onFailure(int i, String s) {
-
-        }
     }
 
     /**
@@ -79,6 +91,37 @@ public class FileHelper {
         SharedPreferences pref=context.getSharedPreferences("weixiaoyuan", context.MODE_PRIVATE);
         int score=pref.getInt("score",0);
         return  score;
+    }
+
+
+    /**
+     * 将图片资源转换为bitmap，此方法使用JNI进行转化，而不是java的createBitmap（）
+     * 更加节省内存，避免OOM错误
+     * @param context
+     * @param resId
+     * @return
+     */
+    public Bitmap readBitmap(Context context, int resId) {
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inPreferredConfig = Bitmap.Config.RGB_565;
+        opts.inPurgeable = true;
+        opts.inInputShareable = true;
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapFactory.decodeStream(is, null, opts);
+    }
+
+    /**
+     * 回收图片资源
+     * @param bitmap
+     */
+    public void recycle(Bitmap bitmap){
+        if(bitmap != null && !bitmap.isRecycled()){
+            // 回收并且置为null
+            bitmap.recycle();
+             bitmap = null;
+        }
+        System.gc();
+
     }
 
 

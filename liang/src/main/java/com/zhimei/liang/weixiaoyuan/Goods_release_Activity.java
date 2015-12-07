@@ -330,17 +330,28 @@ public class Goods_release_Activity extends Activity {
         secondHandGoods.setTradeWay("卖出");
         secondHandGoods.setPublishMan(MyApplication.getCurrentName());//得到当前用户的名称
         secondHandGoods.save(Goods_release_Activity.this, new SaveListener() {
+            /**
+             * 发布无论成功与否，都要回到主界面
+             */
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
                 new FileHelper().storeUpScore(Goods_release_Activity.this, 3);
                 Toast.makeText(Goods_release_Activity.this, "商品发布成功", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent=new Intent(Goods_release_Activity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
 
             @Override
             public void onFailure(int i, String s) {
                 progressDialog.dismiss();
                 Toast.makeText(Goods_release_Activity.this, s, Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent=new Intent(Goods_release_Activity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
     }
@@ -392,6 +403,20 @@ public class Goods_release_Activity extends Activity {
             return true;
 
         }
+    }
+
+    /**
+     * 释放位图的内存
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(picture != null && !picture.isRecycled()){
+            // 回收并且置为null
+            picture.recycle();
+            picture = null;
+        }
+        System.gc();
     }
 
 

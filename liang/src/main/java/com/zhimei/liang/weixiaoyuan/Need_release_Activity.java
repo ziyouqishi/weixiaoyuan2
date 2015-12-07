@@ -107,17 +107,28 @@ public class Need_release_Activity extends Activity {
         demandObject.setCategary(catagary);
         demandObject.setDescreption(descreption);
         demandObject.save(Need_release_Activity.this, new SaveListener() {
+            /**
+             * 发布无论成功与否，都要回到主界面
+             */
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
                 Toast.makeText(Need_release_Activity.this, "需求发布成功", Toast.LENGTH_SHORT).show();
                 new FileHelper().storeUpScore(Need_release_Activity.this, 3);
+                finish();
+                Intent intent=new Intent(Need_release_Activity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
 
             @Override
             public void onFailure(int i, String s) {
                 progressDialog.dismiss();
                 Toast.makeText(Need_release_Activity.this, s, Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent=new Intent(Need_release_Activity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
 

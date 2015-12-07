@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.zhimei.liang.customview.CircleImageDrawable;
 import com.zhimei.liang.utitls.DemandObject;
 import com.zhimei.liang.utitls.FileHelper;
 import com.zhimei.liang.utitls.MyApplication;
@@ -40,11 +41,10 @@ public class AllDemandsFragment extends Fragment {
     private ArrayList<DemandObject> al_demandobject;
     private ArrayList<HashMap<String,Object>> arrayList_map;
     private SimpleAdapter simpleAdapter;
-    private int loopNum=0;//循环计数
-    private int refreshTime=0;//刷新次数的记录
     private BmobQuery<DemandObject> query ;
     private final static int DATACHANGED=1;
     private ProgressDialog progressDialog;
+    private boolean isRefreshFlag=false;
     private BmobQuery<User>  queryUser;
     private ArrayList<String>  listHeadPicture;//存储发布者的头像Url
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
@@ -71,7 +71,7 @@ public class AllDemandsFragment extends Fragment {
     void initViews(){
         progressDialog=new ProgressDialog(view.getContext());
         progressDialog.setMessage("正在加载数据，请稍后");
-        progressDialog.setCancelable(true);
+        progressDialog.setCancelable(false);
         progressDialog.show();
         judgeAndquery();
 
@@ -85,27 +85,24 @@ public class AllDemandsFragment extends Fragment {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                /**
-                 * j用于判断当前界面是第几次刷新
-                 */
-                Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
-                if (refreshTime == 0) {
+                if(isRefreshFlag){
                     arrayList_map.clear();
                     simpleAdapter.notifyDataSetChanged();
-
+                    isRefreshFlag=false;
                     judgeAndquery();
 
-                } else {
+                }
+                else{
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
                             swipeLayout.setRefreshing(false);
                             //进行数据更新
                         }
-                    }, 2000);
-                    Toast.makeText(view.getContext(), "当前已经是最新数据", Toast.LENGTH_SHORT).show();
+                    }, 1500);
+                    Toast.makeText(view.getContext(), "正在加载数据，请稍后", Toast.LENGTH_SHORT).show();
+
                 }
-                refreshTime = refreshTime + 1;
 
             }
         });
@@ -120,21 +117,6 @@ public class AllDemandsFragment extends Fragment {
         al_demandobject=new ArrayList<>();
         arrayList_map=new ArrayList<>();
 
-
- /*       Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.logo);
-        DemandObject demandObject=new DemandObject("自行车",bitmap,"这辆自行车新买的不久，我很少使用，质优价廉，非诚勿扰","2014-5-14");
-        DemandObject demandObject2=new DemandObject("电脑",bitmap,"这台电脑新买的不久，我很少使用，质优价廉，非诚勿扰","2012-5-14");
-        al_demandobject.add(demandObject);
-        al_demandobject.add(demandObject2);
-
-        for(DemandObject demand:al_demandobject){
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put("goodname",demand.getGoodName());
-            map.put("picture",demand.getHeadPicture());
-            map.put("descreption",demand.getDescreption());
-            map.put("time",demand.getTime());
-            arrayList_map.add(map);
-        }*/
 
         simpleAdapter = new SimpleAdapter(view.getContext(),
                 arrayList_map,
@@ -151,7 +133,8 @@ public class AllDemandsFragment extends Fragment {
 
                 if (view instanceof ImageView && data instanceof Bitmap) {
                     ImageView iv = (ImageView) view;
-                    iv.setImageBitmap((Bitmap) data);
+                   // iv.setImageBitmap((Bitmap) data);
+                    iv.setImageDrawable(new CircleImageDrawable((Bitmap)data));
                     return true;
                 } else {
                     return false;
@@ -274,9 +257,7 @@ public class AllDemandsFragment extends Fragment {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             swipeLayout.setRefreshing(false);
-            Log.i("liang", "今天天气真好");
-            Log.i("liang",listHeadPicture.size()+"             kioopo");
-            Log.i("liang", "今天天气不错");
+            isRefreshFlag=true;
            /* for(int i=0;i<listHeadPicture.size();i++){
                 Log.i("liang",listHeadPicture.get(i));
 
@@ -324,7 +305,7 @@ public class AllDemandsFragment extends Fragment {
                 /**
                  * 后面要换成真正的头像
                  */
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo4);
 
                 /**
                  * 每次得到数据，边将数据加载进simpleAdapter的数据院中

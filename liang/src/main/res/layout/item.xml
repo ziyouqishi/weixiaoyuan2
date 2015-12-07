@@ -16,7 +16,6 @@
         android:id="@+id/goods_image"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:src="@mipmap/aixin"
 
         />
     <TextView
@@ -24,7 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/goods_image"
-        android:text="数字信号"
         android:maxEms="6"
         android:singleLine="true"
         android:textSize="15sp"/>
@@ -35,8 +33,7 @@
         android:layout_below="@+id/goods_image"
         android:layout_alignRight="@+id/goods_image"
         android:textColor="#FF3030"
-        android:textSize="15sp"
-        android:text="¥15.00"/>
+        android:textSize="15sp" />
 
     <ImageView
         android:id="@+id/hengxian"

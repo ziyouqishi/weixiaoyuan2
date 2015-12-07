@@ -47,7 +47,7 @@ public class SecHandAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
-        String color[]={"#8A2BE2","#EEB422","#EE7621","#00CD66","#1E90FF","#4F94CD","#00F5FF","#00CD00"};
+        String color[]={"#00EE76","#EEB422","#EE7621","#00CD66","#1E90FF","#4F94CD","#00F5FF","#00CD00"};
         if(convertView==null){
             convertView = mInflater.inflate(R.layout.sec_item,null);
             convertView.setBackgroundColor(Color.parseColor(color[position]));

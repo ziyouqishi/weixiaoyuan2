@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent">
     <RelativeLayout
 
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         >
 
     <TextView
@@ -23,10 +24,28 @@
             android:id="@+id/sec_iv_item"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@mipmap/logo"
             android:layout_below="@+id/sec_tv_item"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="22dp"
             />
+
+<!--        <TextView
+            android:id="@+id/sec_tv_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="二手市场"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:id="@+id/sec_iv_item"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/logo4"
+            android:layout_below="@+id/sec_tv_item"
+            android:layout_marginTop="10dp"
+
+            />-->
     </RelativeLayout>
 </RelativeLayout>

@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.zhimei.liang.customview.RoundImageView;
+import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.utitls.RealPath;
 import com.zhimei.liang.utitls.User;
 import java.io.File;
@@ -105,7 +106,6 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "请点击上面的图标选择头像", Toast.LENGTH_SHORT).show();
                 } else {
                    loadFileandSignUp();
-                   // new SignUpTast().execute();
                 }
             }
         });
@@ -117,15 +117,16 @@ public class RegisterActivity extends Activity {
     }
 
     /**
-     * 上传图片后，进行登录
+     * 上传图片后，进行注册
      */
     void loadFileandSignUp(){
-        progressDialog=ProgressDialog.show(RegisterActivity.this, "", "正在登录中");
+        progressDialog=ProgressDialog.show(RegisterActivity.this, "", "正在向服务器提交数据中，请稍后");
         // String path=Environment.getExternalStorageDirectory()+"/xiao.jpeg";
          bmobFile=new BmobFile(new File(picturePath));
         bmobFile.uploadblock(RegisterActivity.this, new UploadFileListener() {
             @Override
             public void onSuccess() {
+
                 sign();
 
             }
@@ -360,13 +361,19 @@ public class RegisterActivity extends Activity {
             @Override
             public void onSuccess() {
                 // TODO Auto-generated method stub
+                MyApplication.setSignUPSuccess(true);
                 progressDialog.dismiss();
+                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                 finish();
+                Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
             }
 
             @Override
-            public void onFailure(int arg0, String arg1) {                progressDialog.dismiss();
+            public void onFailure(int arg0, String arg1) {
+                progressDialog.dismiss();
                 // TODO Auto-generated method stub
                 if(arg1.contains("already taken")&&arg1.contains("username")){
                     Toast.makeText(RegisterActivity.this, "对不起，该用户名已经被注册，请重新注册", Toast.LENGTH_SHORT).show();
@@ -374,6 +381,11 @@ public class RegisterActivity extends Activity {
                 else{
                     Toast.makeText(RegisterActivity.this, arg1, Toast.LENGTH_SHORT).show();
                 }
+
+                finish();
+                Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
                 });
     }
@@ -421,6 +433,18 @@ public class RegisterActivity extends Activity {
             return true;
 
         }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(picture != null && !picture.isRecycled()){
+            // 回收并且置为null
+            picture.recycle();
+            picture = null;
+        }
+        System.gc();
     }
 
 

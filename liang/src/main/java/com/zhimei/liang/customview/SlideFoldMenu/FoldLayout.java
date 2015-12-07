@@ -92,6 +92,14 @@ public class FoldLayout extends ViewGroup {
 
     }
 
+    /**
+     * 内存泄露报错
+     * @param changed
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         View child = getChildAt(0);
@@ -100,9 +108,10 @@ public class FoldLayout extends ViewGroup {
         //  Config.ARGB_8888 是 Bitmap.Config的 几个常量之一  表示 代表32位ARGB位图
         //  当然位图的位数  越高   则画面越逼真
         mBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(),
-                Config.ARGB_8888);
+                Config.ARGB_4444);
         mCanvas.setBitmap(mBitmap);
         updateFold();
+
 
     }
 

@@ -49,11 +49,11 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true">
 
-                    <com.zhimei.liang.customview.RoundImageView
+                    <ImageView
                         android:id="@+id/per_iv_image"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@mipmap/logo"
+                        android:src="@mipmap/logo4"
                         android:layout_centerHorizontal="true"
                         />
 

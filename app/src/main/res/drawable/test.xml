@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:drawable="@drawable/goods"/>
+    <item android:state_focused="true"
+        android:drawable="@drawable/touxiang"/>
+    <item
+        android:drawable="@drawable/aixin"/>
+
+</selector>-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <item android:state_selected="true">
+        <shape>
+            <gradient android:angle="270"
+                android:endColor="#99BD4C"
+                android:startColor="#A5D245" />
+            <size android:height="60dp"
+                android:width="320dp" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape>
+            <gradient android:angle="270" android:endColor="#99BD4C"
+                android:startColor="#A5D245"/>
+            <size android:height="60dp" android:width="320dp" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item>
+        <shape
+           >
+
+            <gradient android:angle="0"
+                android:endColor="#FF6347"
+                android:startColor="#E0FFFF"
+                android:type="linear"/>
+            <size android:height="60dp" android:width="320dp" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</selector>

@@ -48,13 +48,6 @@ public class JunkDrinkFragment extends Fragment {
         lv=(ListView)view.findViewById(R.id.lv_live);
         buy=(ImageButton) view.findViewById(R.id.already_choosed);
 
-        int test=R.drawable.goods;
-
-       /* for(int i=0;i<15;i++){
-            ShopGoods shopGoods=new ShopGoods(test,"营业中","已售34份","¥ 3.5","壁纸");
-            al_goods.add(shopGoods);
-        }*/
-
         ShopGoods shopGoods1=new ShopGoods(R.mipmap.food_1,"已售完","已售41份","¥ 53","兰刀鱼");
         ShopGoods shopGoods2=new ShopGoods(R.mipmap.food2,"营业中","已售34份","¥ 57.5","牛肉干");
         ShopGoods shopGoods3=new ShopGoods(R.mipmap.food3,"已售完","已售11份","¥ 33","酒糖鱼");

@@ -54,12 +54,10 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
-        String color[]={"#836FFF","#8968CD","#76EE00","#7B68EE","#551A8B"};
 
         buy=(ImageButton)view.findViewById(R.id.already_choosed);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.shopitem,null);
-           // convertView.setBackgroundColor(Color.parseColor(color[position]));
             holder = new ViewHolder();
             /**得到各个控件的对象*/
             holder.name = (TextView) convertView.findViewById(R.id.shop_good_name);

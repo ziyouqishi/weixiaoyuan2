@@ -102,6 +102,8 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(LoginActivity.this, "亲，登录成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
                         MyApplication.setSignUPSuccess(true);
                         MyApplication.setCurrentName(name);
                     }

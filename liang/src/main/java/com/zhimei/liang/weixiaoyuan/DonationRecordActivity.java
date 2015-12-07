@@ -46,6 +46,7 @@ public class DonationRecordActivity extends Activity {
     private int loopNum=0;//循环计数
     private int refreshTime=0;//刷新次数的记录
     private BmobQuery<DonationRecord> query ;
+    private boolean isRefreshFlag=false;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private SwipeRefreshLayout swipeLayout;
     private final static int DATACHANGED=1;
@@ -112,9 +113,9 @@ public class DonationRecordActivity extends Activity {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                /**
+  /*              *//**
                  * j用于判断当前界面是第几次刷新
-                 */
+                 *//*
 
                 swipeLayout.setRefreshing(true);
                 if(refreshTime==0) {
@@ -131,29 +132,30 @@ public class DonationRecordActivity extends Activity {
                         }
                     }, 2000);
                     Toast.makeText(DonationRecordActivity.this, "当前已经是最新数据", Toast.LENGTH_SHORT).show();
+                }*/
+
+                swipeLayout.setRefreshing(true);
+                if(isRefreshFlag){
+                    mapArrayList.clear();
+                    simpleAdapter.notifyDataSetChanged();
+                    isRefreshFlag=false;
+                    judgeAndquery();
+
+                }
+                else{
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            swipeLayout.setRefreshing(false);
+                            //进行数据更新
+                        }
+                    }, 1500);
+                    Toast.makeText(DonationRecordActivity.this, "正在加载数据，请稍后", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
         });
 
-        Drawable drawable=this.getResources().getDrawable(R.mipmap.disini);
-        BitmapDrawable bitmapDrawable=(BitmapDrawable)drawable;
-        Bitmap bitmap= bitmapDrawable.getBitmap();
-
-      /*  for(int i=0;i<12;i++){
-           DonationRecord dr=new DonationRecord("迪斯尼公主精选集","支教团队","2015.5.10",bitmap);
-            trList.add(dr);
-        }*/
-
-
-       /* for(int j=0;j<trList.size();j++){
-            HashMap<String,Object> map=new HashMap<>();
-            map.put("picture",trList.get(j).getPicture());
-            map.put("name",trList.get(j).getName());
-            map.put("organization",trList.get(j).getReceiveOrganization());
-            map.put("time",trList.get(j).getTime());
-            mapArrayList.add(map);
-        }*/
 
 
          simpleAdapter=new SimpleAdapter(this,mapArrayList,R.layout.donation_record_item,
@@ -308,6 +310,7 @@ public class DonationRecordActivity extends Activity {
 
 
                     }
+                    isRefreshFlag=true;
 
                 }
             }).start();
@@ -331,7 +334,7 @@ public class DonationRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo4);
 
 
                 /**

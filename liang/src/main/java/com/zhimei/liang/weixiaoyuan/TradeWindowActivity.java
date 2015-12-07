@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.bmob.pay.tool.BmobPay;
 import com.bmob.pay.tool.PayListener;
+import com.zhimei.liang.customview.CircleImageDrawable;
 import com.zhimei.liang.customview.RoundImageView;
 import com.zhimei.liang.fragment.IndexFragment;
 import com.zhimei.liang.utitls.FileHelper;
@@ -39,7 +41,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.ThumbnailUrlListener;
 
 public class TradeWindowActivity extends Activity {
-    private RoundImageView publishManPicture;
+    private ImageView publishManPicture;
     private TextView et_publishManName;
     private TextView et_goodName;
     private TextView et_goodDescription;
@@ -96,10 +98,25 @@ public class TradeWindowActivity extends Activity {
         back=(ImageButton)findViewById(R.id.trade_window_succ_back);
         duanxin=(RelativeLayout)findViewById(R.id.all);
         phone=(RelativeLayout)findViewById(R.id.per_center);
-       // chat=(RelativeLayout)findViewById(R.id.trade_windowation);
+        chat=(RelativeLayout)findViewById(R.id.trade_windowation);
         zhifubao=(RelativeLayout)findViewById(R.id.sec_market);
         goodPicture=(ImageView)findViewById(R.id.trade_goods_picture);
-        publishManPicture=(RoundImageView)findViewById(R.id.publishman_touxiang);
+        publishManPicture=(ImageView)findViewById(R.id.publishman_touxiang);
+        /**
+         * 在头像加载之前，先给publishManPicture设置一张图片，使用JNI的方式获取图片的bitmap对象
+         * 使用try catch是为了防止OOM
+         */
+        try{
+            publishManPicture.setImageDrawable(new CircleImageDrawable(new FileHelper().readBitmap(this,R.mipmap.logo4)));
+
+        }
+        catch (OutOfMemoryError error){
+            publishManPicture.setImageDrawable(new CircleImageDrawable(new FileHelper().readBitmap(this,R.mipmap.logo4)));
+
+            error.printStackTrace();
+            Log.i("liang","内存泄露");
+        }
+
 
         duanxin.setOnClickListener(new View.OnClickListener() {
 
@@ -111,14 +128,14 @@ public class TradeWindowActivity extends Activity {
                 final String message="你好，我对你发布的商品”"+hashMap.get("name").toString()
                         +"“比较满意，咱们能进一步联系吗？";
                 AlertDialog.Builder dialog=new AlertDialog.Builder(TradeWindowActivity.this);
-                dialog.setTitle("将发送短信至"+phoneNumber);
+                dialog.setTitle("将发送短信至" + phoneNumber);
                 dialog.setIcon(R.mipmap.test1);
                 dialog.setMessage(message);
                 dialog.setCancelable(false);
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SmsManager smsManager=SmsManager.getDefault();
+                        SmsManager smsManager = SmsManager.getDefault();
                         smsManager.sendTextMessage(phoneNumber, null, message, null, null);
                     }
                 });
@@ -162,14 +179,14 @@ public class TradeWindowActivity extends Activity {
             }
         });
 
-       /* chat.setOnClickListener(new View.OnClickListener() {
+       chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(TradeWindowActivity.this,ChatActivity.class);
                 startActivity(intent);
 
             }
-        });*/
+        });
 
         /**
          * 支付宝支付，支付宝支付成功后，要删除数据
@@ -202,21 +219,18 @@ public class TradeWindowActivity extends Activity {
         });
 
         et_goodDescription.setText(hashMap.get("description").toString());
-        if(hashMap.get("publishMan")==null){
-            et_publishManName.setText("自由的心");
-        }
-        else{
-            et_publishManName.setText(hashMap.get("publishMan").toString());
-        }
-
+        et_publishManName.setText(hashMap.get("publishMan").toString());
         et_goodName.setText(hashMap.get("name").toString());
         et_goodPrice.setText(hashMap.get("price").toString());
         et_time.setText(hashMap.get("time").toString());
-        goodPicture.setImageBitmap((Bitmap) hashMap.get("bitmap"));
+        Bitmap picture=(Bitmap) hashMap.get("bitmap");
+        goodPicture.setImageBitmap(picture);
         /**
          * 查询用户信息
          */
         getPublishManInformation();
+
+
 
     }
 
@@ -225,27 +239,18 @@ public class TradeWindowActivity extends Activity {
      */
     void getPublishManInformation(){
         String publishMan;
-        if(hashMap.get("publishMan")==null){
-            publishMan="11";
-        }
-        else{
-            publishMan=hashMap.get("publishMan").toString();
-        }
-
+        publishMan=hashMap.get("publishMan").toString();
         query=new BmobQuery<User>();
         progressDialog=ProgressDialog.show(TradeWindowActivity.this, "", "正在连接服务器");
         query.addWhereEqualTo("username",publishMan);
         query.findObjects(TradeWindowActivity.this, new FindListener<User>() {
             @Override
             public void onSuccess(List<User> list) {
-               // Log.i("liang",list.get(0).getMobilePhoneNumber());
                 progressDialog.dismiss();
                 et_address.setText(list.get(0).getAddress());
                 phoneNumber=list.get(0).getMobilePhoneNumber();
 
-               // list.get(0).getPicture().loadImage(TradeWindowActivity.this,goodPicture);
-              //  headPictureUrl=list.get(0).getPicture().getFileUrl(TradeWindowActivity.this);
-              //  new LoadPicture().execute();
+
                 list.get(0).getPicture().getThumbnailUrl(TradeWindowActivity.this, 200, 275, 15, new ThumbnailUrlListener() {
                     @Override
                     public void onSuccess(String s) {
@@ -253,7 +258,8 @@ public class TradeWindowActivity extends Activity {
                         /**
                          * 加载缩略图
                          */
-                        new LoadPicture().execute();
+                       // new LoadPicture().execute();
+                        Toast.makeText(TradeWindowActivity.this,"线程已经结束",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -284,8 +290,11 @@ public class TradeWindowActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
-            publishManPicture.setImageBitmap(bitmap);
-
+            publishManPicture.setImageDrawable(new CircleImageDrawable(bitmap));
+            /**
+             * 关闭图片资源
+             */
+           // new FileHelper().recycle(bitmap);
         }
 
         @Override
@@ -308,7 +317,7 @@ public class TradeWindowActivity extends Activity {
          BmobQuery<SecondHandGoods> query_decond=new BmobQuery<>() ;
         query_decond.addWhereEqualTo("name",hashMap.get("name").toString());
         query_decond.addWhereEqualTo("description",hashMap.get("description").toString());
-        query_decond.addWhereEqualTo("publishMan",MyApplication.getCurrentName());
+        query_decond.addWhereEqualTo("publishMan", MyApplication.getCurrentName());
         query_decond.findObjects(TradeWindowActivity.this, new FindListener<SecondHandGoods>() {
             @Override
             public void onSuccess(List<SecondHandGoods> list) {
@@ -403,9 +412,11 @@ public class TradeWindowActivity extends Activity {
 
             }
         });
-
-
-
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+       // goodPicture.setImageBitmap(null);
+    }
 }

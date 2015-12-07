@@ -166,7 +166,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 else{
                     transaction.show(frg_donation);
                 }
-                loveing.setBackgroundResource(R.mipmap.aixin);
+                loveing.setBackgroundResource(R.mipmap.aixin_press);
                 aixinjuanzeng.setTextColor(0xff5CACEE);
                 break;
             case 4:
@@ -235,6 +235,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         SharedPreferences.Editor editor=getSharedPreferences("weixiaoyuan", MODE_PRIVATE).edit();
         editor.putInt("score",new FileHelper().getScore(MainActivity.this));
         editor.commit();
+    }
+
+    @Override
+    protected  void  onDestroy(){
+        super.onDestroy();
+        System.exit(0);
     }
 
 }

@@ -19,6 +19,31 @@
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_chat.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_query_goods.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_trade_window.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -34,12 +59,32 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/fragment_person_center.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/fragment_seco_market.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/frament_super_market.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/frgment_allgoode.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/include_chat_bottom_bar.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_sent_message.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
@@ -52,7 +97,7 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="weixiaoyuan" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="871218a8-4dfb-4f6a-8eb2-c2acc650b313" name="Default" comment="" />
@@ -82,120 +127,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/RegisterActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="377" column="19" selection-start-line="377" selection-start-column="19" selection-end-line="377" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndexFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1912351">
-              <caret line="113" column="17" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
-              <folding>
-                <element signature="e#3736#3943#0" expanded="true" />
-                <element signature="e#3942#3943#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QueryGoodsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/QueryGoodsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="272" column="19" selection-start-line="272" selection-start-column="19" selection-end-line="272" selection-end-column="19" />
-              <folding>
-                <element signature="e#8522#9148#0" expanded="true" />
-                <element signature="e#9147#9148#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JunkDrinkFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/JunkDrinkFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2734#2735#0" expanded="false" />
-                <element signature="e#2797#2798#0" expanded="false" />
-                <element signature="e#2951#2952#0" expanded="false" />
-                <element signature="e#3016#3017#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndividulDemandFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulDemandFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#8768#8769#0" expanded="false" />
-                <element signature="e#8822#8823#0" expanded="false" />
-                <element signature="e#8882#8883#0" expanded="false" />
-                <element signature="e#8925#8926#0" expanded="false" />
-                <element signature="e#10586#10587#0" expanded="false" />
-                <element signature="e#10640#10641#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_login.xml">
+      <file leaf-file-name="item_chat_right.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_right.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="116" column="28" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.47248578">
+              <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_register.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_register.xml">
+      <file leaf-file-name="ChatActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/ChatActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="75.0">
+              <caret line="441" column="50" selection-start-line="441" selection-start-column="50" selection-end-line="441" selection-end-column="50" />
+              <folding>
+                <element signature="e#7742#8437#0" expanded="true" />
+                <element signature="e#8436#8437#0" expanded="true" />
+                <element signature="e#9550#10466#0" expanded="true" />
+                <element signature="e#10465#10466#0" expanded="true" />
+                <element signature="e#19110#19125#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CircleImageDrawable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/CircleImageDrawable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecHandAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/SecHandAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/MyAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="72" column="13" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item_chat_left.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_left.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.769231">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_main.xml">
+      <file leaf-file-name="activity_chat.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_chat.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-35.692307">
+              <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
+              <folding>
+                <element signature="e#3504#3529#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liang/src/main/AndroidManifest.xml">
+      <file leaf-file-name="btn_chat_voice_selector.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/btn_chat_voice_selector.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+              <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -2799,58 +2822,65 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_alter_address.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/AlterAddressActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/DemandCenterActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/Need_release_Activity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/drawable/drawable_point_indicator.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_3.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_2.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_1.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/GuideFragment1.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/GuideFragment2.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/GuideFragment3.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_guide.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/DepthPageTransformer.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/ViewPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/GuideActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/drawable/btn_innew.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_4.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_first.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/values/zoomin.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/zoomin.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/anim/zoomin.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/anim/zoomout.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/SecHandFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_score.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/ScoreActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/SlideFoldMenu/FoldSlidingMenu.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/SlideFoldMenu/SlidingMenu.java" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndexFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/AllDemandsFragment.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/Need_release_Activity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/SecHandAdapter.java" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/DonationRecordActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeRecordActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/GuideFragment4.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/frgment_allgoode.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/FirstActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeWindowActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_trade_window.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/LearnToolsFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/LiveToolsFragment.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/mainlayout.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item.xml" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/JunkDrinkFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/MyAdapter.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/sec_item.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/shopitem.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/donation_record_item.xml" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/DonationFragment.java" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/Goods_release_Activity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_seco_market.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulDemandFragment.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_register.xml" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/RegisterActivity.java" />
         <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/QueryGoodsActivity.java" />
-        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/SecHandAdapter.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/RegisterActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/SlideFoldMenu/FoldLayout.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/CircleImageDrawable.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/fragment_person_center.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulFragment.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/trade_record_item.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeRecordActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/AllDemandsFragment.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulDemandFragment.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/demanditem.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/FileHelper.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/MyApplication.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_trade_window.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeWindowActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/FirstActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/MainActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndexFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/test.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/test.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/line.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/include_emo_gridview.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/ght.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/emo_item.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/include_chat_add.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/include_chat_bottom_bar.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item_expression.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhimei/weixiaoyuan/TestActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item_chat_sent_message.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/activity_chat.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/ChatActivity.java" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item_chat_left.xml" />
+        <option value="$PROJECT_DIR$/liang/src/main/res/layout/item_chat_right.xml" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="NamedScopeManager">
@@ -2885,7 +2915,28 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2906,6 +2957,60 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mipmap" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2961,6 +3066,28 @@
               <option name="myItemId" value="liang" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utitls" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2993,12 +3120,32 @@
               <option name="myItemId" value="liang" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customview" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Weixiaoyuan" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liang" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3015,21 +3162,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\drawable" />
+      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\layout" />
+      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\app\src\main\res\drawable" />
       <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\mipmap-hdpi" />
       <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\java\com\zhimei\liang\utitls" />
-      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\layout" />
-      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\drawable" />
-      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\java\com\zhimei\liang\customview\chatview" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.zhimei.liang" />
+      <recent name="com.zhimei.weixiaoyuan" />
       <recent name="com.zhimei.liang.weixiaoyuan" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\drawable" />
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\eclipse\chengxu4\Weixiaoyuan\liang\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.liang">
@@ -3259,6 +3407,7 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3267,21 +3416,21 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47554806" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11129848" sideWeight="0.4939117" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.075885326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.02529511" sideWeight="0.4939117" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2526636" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26560122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32715008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1170" height="544" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288364" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -3305,143 +3454,49 @@
           <line>1</line>
           <properties />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/zhimei/weixiaoyuan/TestActivity.java</url>
+          <line>29</line>
+          <properties class="com.zhimei.weixiaoyuan.TestActivity" method="initView" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/DonationRecordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="45" selection-start-line="202" selection-start-column="45" selection-end-line="202" selection-end-column="45" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue11a.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeRecordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48956355">
-          <caret line="250" column="21" selection-start-line="250" selection-start-column="21" selection-end-line="250" selection-end-column="21" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue401.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/GuideActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue40a.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/GuideFragment4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue409.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/FirstActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/TradeWindowActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-          <folding>
-            <element signature="e#2485#2753#0" expanded="false" />
-            <element signature="e#2752#2753#0" expanded="false" />
-            <element signature="e#2485#2753#0" expanded="false" />
-            <element signature="e#2752#2753#0" expanded="false" />
-            <element signature="e#5491#5829#0" expanded="false" />
-            <element signature="e#5828#5829#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_trade_window.xml">
+    <entry file="file://E:/software/androidstudio/ASSDK/platforms/android-22/data/res/layout/simple_selectable_list_item.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.5384614">
-          <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="1.1954262">
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/study1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/study2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/study3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/LearnToolsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/live1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/live2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/live3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/LiveToolsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="33" selection-start-line="57" selection-start-column="7" selection-end-line="62" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/food_1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/food2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/food3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/aixin.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-xxhdpi/xuqiuzhongxin.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/fragment_all_demand.xml">
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/emo_item.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
@@ -3452,12 +3507,359 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/fragment_individul_demand.xml">
+    <entry file="file://E:/software/androidstudio/ASSDK/sources/android-22/java/lang/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37230214">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#124601#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#16508#16509#0" expanded="false" />
+            <element signature="e#16553#16554#0" expanded="false" />
+            <element signature="e#16761#16762#0" expanded="false" />
+            <element signature="e#16808#16809#0" expanded="false" />
+            <element signature="e#16923#16924#0" expanded="false" />
+            <element signature="e#16958#16959#0" expanded="false" />
+            <element signature="e#61127#61128#0" expanded="false" />
+            <element signature="e#61169#61170#0" expanded="false" />
+            <element signature="e#61691#61692#0" expanded="false" />
+            <element signature="e#61731#61732#0" expanded="false" />
+            <element signature="e#62266#62267#0" expanded="false" />
+            <element signature="e#62300#62301#0" expanded="false" />
+            <element signature="e#62451#62452#0" expanded="false" />
+            <element signature="e#62479#62480#0" expanded="false" />
+            <element signature="e#63313#63314#0" expanded="false" />
+            <element signature="e#63359#63360#0" expanded="false" />
+            <element signature="e#63583#63584#0" expanded="false" />
+            <element signature="e#63615#63616#0" expanded="false" />
+            <element signature="e#64180#64181#0" expanded="false" />
+            <element signature="e#64247#64248#0" expanded="false" />
+            <element signature="e#68176#68177#0" expanded="false" />
+            <element signature="e#68229#68230#0" expanded="false" />
+            <element signature="e#91309#91310#0" expanded="false" />
+            <element signature="e#91353#91354#0" expanded="false" />
+            <element signature="e#96007#96008#0" expanded="false" />
+            <element signature="e#96054#96055#0" expanded="false" />
+            <element signature="e#98222#98223#0" expanded="false" />
+            <element signature="e#98261#98262#0" expanded="false" />
+            <element signature="e#99128#99129#0" expanded="false" />
+            <element signature="e#99176#99177#0" expanded="false" />
+            <element signature="e#100353#100354#0" expanded="false" />
+            <element signature="e#100395#100396#0" expanded="false" />
+            <element signature="e#100705#100706#0" expanded="false" />
+            <element signature="e#100753#100754#0" expanded="false" />
+            <element signature="e#100862#100863#0" expanded="false" />
+            <element signature="e#100890#100891#0" expanded="false" />
+            <element signature="e#101130#101131#0" expanded="false" />
+            <element signature="e#101188#101189#0" expanded="false" />
+            <element signature="e#101426#101427#0" expanded="false" />
+            <element signature="e#101486#101487#0" expanded="false" />
+            <element signature="e#102444#102445#0" expanded="false" />
+            <element signature="e#102483#102484#0" expanded="false" />
+            <element signature="e#102870#102871#0" expanded="false" />
+            <element signature="e#102917#102918#0" expanded="false" />
+            <element signature="e#103262#103263#0" expanded="false" />
+            <element signature="e#103301#103302#0" expanded="false" />
+            <element signature="e#104227#104228#0" expanded="false" />
+            <element signature="e#104280#104281#0" expanded="false" />
+            <element signature="e#105590#105591#0" expanded="false" />
+            <element signature="e#105634#105635#0" expanded="false" />
+            <element signature="e#106410#106411#0" expanded="false" />
+            <element signature="e#106462#106463#0" expanded="false" />
+            <element signature="e#108038#108039#0" expanded="false" />
+            <element signature="e#108091#108092#0" expanded="false" />
+            <element signature="e#109377#109378#0" expanded="false" />
+            <element signature="e#109424#109425#0" expanded="false" />
+            <element signature="e#109847#109848#0" expanded="false" />
+            <element signature="e#109893#109894#0" expanded="false" />
+            <element signature="e#110161#110162#0" expanded="false" />
+            <element signature="e#110201#110202#0" expanded="false" />
+            <element signature="e#111129#111130#0" expanded="false" />
+            <element signature="e#111176#111177#0" expanded="false" />
+            <element signature="e#112266#112267#0" expanded="false" />
+            <element signature="e#112309#112310#0" expanded="false" />
+            <element signature="e#113319#113320#0" expanded="false" />
+            <element signature="e#113362#113363#0" expanded="false" />
+            <element signature="e#115088#115089#0" expanded="false" />
+            <element signature="e#115129#115130#0" expanded="false" />
+            <element signature="e#115466#115467#0" expanded="false" />
+            <element signature="e#115515#115516#0" expanded="false" />
+            <element signature="e#115976#115977#0" expanded="false" />
+            <element signature="e#116029#116030#0" expanded="false" />
+            <element signature="e#117894#117895#0" expanded="false" />
+            <element signature="e#117937#117938#0" expanded="false" />
+            <element signature="e#118682#118683#0" expanded="false" />
+            <element signature="e#118726#118727#0" expanded="false" />
+            <element signature="e#120634#120635#0" expanded="false" />
+            <element signature="e#120680#120681#0" expanded="false" />
+            <element signature="e#121109#121110#0" expanded="false" />
+            <element signature="e#121159#121160#0" expanded="false" />
+            <element signature="e#122000#122001#0" expanded="false" />
+            <element signature="e#122044#122045#0" expanded="false" />
+            <element signature="e#122302#122303#0" expanded="false" />
+            <element signature="e#122346#122347#0" expanded="false" />
+            <element signature="e#122727#122728#0" expanded="false" />
+            <element signature="e#122775#122776#0" expanded="false" />
+            <element signature="e#123189#123190#0" expanded="false" />
+            <element signature="e#123238#123239#0" expanded="false" />
+            <element signature="e#123740#123741#0" expanded="false" />
+            <element signature="e#123790#123791#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/software/androidstudio/ASSDK/platforms/android-22/data/res/layout/simple_list_item_1.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.5">
+        <state vertical-scroll-proportion="0.04528302">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue40e.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue410.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue421.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/include_chat_add.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/chat_keyboard_normal.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/btn_chat_keyboard_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22593321">
+          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/chat_voice_normal.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://E:/software/androidstudio/ASSDK/sources/android-22/android/widget/TextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8189" column="25" selection-start-line="8189" selection-start-column="16" selection-end-line="8189" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/include_chat_bottom_bar.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.153846">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/software/androidstudio/ASSDK/sources/android-22/android/text/SpannableStringInternal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29326048">
+          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_expression.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/emo_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6921606">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/chatview/EmoticonsEditText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0944558">
+          <caret line="51" column="51" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/software/androidstudio/ASSDK/sources/android-22/android/text/SpannableString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51950717">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90631366">
+          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhimei/weixiaoyuan/TestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue105.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/include_emo_gridview.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93686354">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ue41f.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/ggg.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/nine.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/lte.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/frametest.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/chat_voice_bg.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_expression.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.846154">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_right.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/frame.9.png">
+      <provider editor-type-id="images">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="ninepatcheditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_left.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -3468,242 +3870,110 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/touxiang_press.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/xin.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://E:/software/androidstudio/ASSDK/sources/android-22/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="670" column="39" selection-start-line="670" selection-start-column="39" selection-end-line="670" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/chat_add_camera_press.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/ershou_press.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/chaoshi.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/lyo.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/index.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/gouwu_press.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1461267">
-          <caret line="109" column="53" selection-start-line="109" selection-start-column="53" selection-end-line="109" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/menulayout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25461254">
-          <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/mainlayout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.076923">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/DonationFragment.java">
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/btn_chat_voice_selector.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item.xml">
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_chat.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24058577">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/frgment_allgoode.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76987445">
-          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/fragment_seco_market.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8556485">
-          <caret line="133" column="36" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/Goods_release_Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.27380952">
-          <caret line="230" column="39" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/JunkDrinkFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+        <state vertical-scroll-proportion="-35.692307">
+          <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2734#2735#0" expanded="false" />
-            <element signature="e#2797#2798#0" expanded="false" />
-            <element signature="e#2951#2952#0" expanded="false" />
-            <element signature="e#3016#3017#0" expanded="false" />
+            <element signature="e#3504#3529#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndividulDemandFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#8768#8769#0" expanded="false" />
-            <element signature="e#8822#8823#0" expanded="false" />
-            <element signature="e#8882#8883#0" expanded="false" />
-            <element signature="e#8925#8926#0" expanded="false" />
-            <element signature="e#10586#10587#0" expanded="false" />
-            <element signature="e#10640#10641#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer">
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/chat_left.9.png">
+      <provider editor-type-id="images">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="28" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_register.xml">
-      <provider editor-type-id="android-designer">
+      <provider selected="true" editor-type-id="ninepatcheditor">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-hdpi/nullpicture.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/QueryGoodsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="272" column="19" selection-start-line="272" selection-start-column="19" selection-end-line="272" selection-end-column="19" />
-          <folding>
-            <element signature="e#8522#9148#0" expanded="true" />
-            <element signature="e#9147#9148#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/SecHandAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5119522">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/RegisterActivity.java">
+    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/utitls/MyAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="377" column="19" selection-start-line="377" selection-start-column="19" selection-end-line="377" selection-end-column="19" />
+          <caret line="72" column="13" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/drawable/goods.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/mipmap-mdpi/test1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/fragment/IndexFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1912351">
-          <caret line="113" column="17" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.24954791">
+          <caret line="128" column="91" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/customview/CircleImageDrawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/java/com/zhimei/liang/weixiaoyuan/ChatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="75.0">
+          <caret line="441" column="50" selection-start-line="441" selection-start-column="50" selection-end-line="441" selection-end-column="50" />
           <folding>
-            <element signature="e#3736#3943#0" expanded="true" />
-            <element signature="e#3942#3943#0" expanded="true" />
+            <element signature="e#7742#8437#0" expanded="true" />
+            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#9550#10466#0" expanded="true" />
+            <element signature="e#10465#10466#0" expanded="true" />
+            <element signature="e#19110#19125#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_left.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.769231">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liang/src/main/res/layout/item_chat_right.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47248578">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

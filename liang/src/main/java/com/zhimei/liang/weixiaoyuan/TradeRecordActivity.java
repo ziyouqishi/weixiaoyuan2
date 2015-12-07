@@ -24,6 +24,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhimei.liang.customview.CircleImageDrawable;
 import com.zhimei.liang.customview.RoundImageView;
 import com.zhimei.liang.nineoldandroids.animation.ObjectAnimator;
 import com.zhimei.liang.utitls.FileHelper;
@@ -46,14 +47,13 @@ public class TradeRecordActivity extends Activity {
     private ImageButton back,index;
     private ArrayList<HashMap<String,Object>> mapArrayList;
     private TextView name,price,time;
-    private RoundImageView picture;
+    private ImageView picture;
     private ListView lv;
     private BmobQuery<SecondHandGoods> query ;
     private  SimpleAdapter simpleAdapter;
     private SwipeRefreshLayout swipeLayout;
-    private int loopNum=0;//循环计数
     private ProgressDialog progressDialog;
-    private int refreshTime=0;//刷新次数的记录
+    private boolean isRefreshFlag=false;
     private  ArrayList<HashMap<String,Object>> al;//存储网络上查询到的资源
     private final static int DATACHANGED=1;
     private Handler handler=new Handler(){
@@ -87,7 +87,7 @@ public class TradeRecordActivity extends Activity {
         name=(TextView)findViewById(R.id.trade_good_name);
         price=(TextView)findViewById(R.id.trade_good_price);
         time=(TextView)findViewById(R.id.trade_good_time);
-        picture=(RoundImageView)findViewById(R.id.trade_good_picture);
+        picture=(ImageView)findViewById(R.id.trade_good_picture);
         lv=(ListView)findViewById(R.id.record_listview);
         back=(ImageButton)findViewById(R.id.record_back);
         index=(ImageButton)findViewById(R.id.record_index);
@@ -98,16 +98,12 @@ public class TradeRecordActivity extends Activity {
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                /**
-                 * j用于判断当前界面是第几次刷新
-                 */
-                Log.i("liang", refreshTime + "");
                 swipeLayout.setRefreshing(true);
-               if(refreshTime==0) {
-                   mapArrayList.clear();
-                   simpleAdapter.notifyDataSetChanged();
-
-                   query();
+                if(isRefreshFlag){
+                    mapArrayList.clear();
+                    simpleAdapter.notifyDataSetChanged();
+                    isRefreshFlag=false;
+                    query();
 
                 }
                 else{
@@ -116,14 +112,12 @@ public class TradeRecordActivity extends Activity {
                             swipeLayout.setRefreshing(false);
                             //进行数据更新
                         }
-                    }, 2000);
-                    Toast.makeText(TradeRecordActivity.this, "当前已经是最新数据", Toast.LENGTH_SHORT).show();
-                }
-                refreshTime=refreshTime+1;
+                    }, 1500);
+                    Toast.makeText(TradeRecordActivity.this, "正在加载数据，请稍后", Toast.LENGTH_SHORT).show();
 
+                }
             }
         });
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,28 +136,6 @@ public class TradeRecordActivity extends Activity {
         });
 
 
-        /**
-         * 根据图片资源获取Bitmap对象
-         */
-      /*  Drawable drawable=this.getResources().getDrawable(R.mipmap.logo);
-        BitmapDrawable bitmapDrawable=(BitmapDrawable)drawable;
-        Bitmap bitmap= bitmapDrawable.getBitmap();
-
-        for(int i=0;i<1;i++){
-            TradeRecord tr=new TradeRecord("海贼王 航海王","2015-02-15",bitmap,"¥ 45.3","买进");
-            trList.add(tr);
-        }
-
-        for(int j=0;j<trList.size();j++){
-            HashMap<String,Object> map=new HashMap<>();
-            map.put("picture",trList.get(j).getPicture());
-            map.put("name",trList.get(j).getGood_name());
-            map.put("price",trList.get(j).getPrice());
-            map.put("time",trList.get(j).getTime());
-            map.put("ways",trList.get(j).getWays());
-           mapArrayList.add(map);
-        }*/
-
          simpleAdapter=new SimpleAdapter(this,mapArrayList,R.layout.trade_record_item,
                 new String[] { "picture", "name","price","time","ways" },
                 new int[]{R.id.trade_good_picture,R.id.trade_good_name,R.id.trade_good_price,R.id.trade_good_time,
@@ -179,10 +151,10 @@ public class TradeRecordActivity extends Activity {
             @Override
             public boolean setViewValue(View view, Object data, String textRepresentation) {
 
-                if (view instanceof RoundImageView && data instanceof Bitmap) {
-                    RoundImageView iv = (RoundImageView) view;
-                    // iv.setImageBitmap((Bitmap) attentionList);
-                    iv.setImageBitmap((Bitmap) data);
+                if (view instanceof ImageView && data instanceof Bitmap) {
+                    ImageView iv = (ImageView) view;
+
+                    iv.setImageDrawable(new CircleImageDrawable((Bitmap)data));
                     return true;
                 } else {
                     return false;
@@ -305,8 +277,8 @@ public class TradeRecordActivity extends Activity {
                         message.what=DATACHANGED;
                         handler.sendMessage(message);
 
-
                     }
+                    isRefreshFlag=true;
 
                 }
             }).start();
@@ -330,7 +302,7 @@ public class TradeRecordActivity extends Activity {
             for(HashMap map:al){
               /*  Log.i("liang", map.get("thumbnailUrl").toString() + "---" + map.get("name").toString() + "---" + map.get("time").toString()
                         + "---" + map.get("price").toString() + "---" + map.get("tradeway").toString());*/
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.goods);
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.logo4);
 
 
                 /**
@@ -348,7 +320,6 @@ public class TradeRecordActivity extends Activity {
                 Message message=new Message();
                 message.what=DATACHANGED;
                 handler.sendMessage(message);
-
 
             }
             return true;
